@@ -1,4 +1,6 @@
 import express from 'express';
+import { request } from 'http';
+import router from './routes/MainRoutIndex';
 
 
 //Create  application object with express()
@@ -9,7 +11,7 @@ const app = express();
 
 const port: number = 3000;
 //Add an API endpoint to get a route, then send a response to the browser
-
+app.use('/api', router);
 
 app.listen(port, () => {
   console.log(`server started at localhost:${port}`);
