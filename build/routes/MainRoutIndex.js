@@ -9,7 +9,7 @@ var express_1 = __importDefault(require("express"));
 var router = express_1.default.Router();
 // router.use('/image-disply', image_disply);
 // router.use('/rout2', rout2);
-router.get('/api', function (req, res) {
+router.get('/', function (req, res) {
     res.send('router Connect!');
 });
 exports.default = router;
