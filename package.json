@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "test": "npm run build && ENV=test db-migrate --env test up && jasmine-ts && db-migrate db:drop test && npm run jasmine ",
+    "migrate": "db-migrate --env test up && db-migrate up ",
+    "test": "ENV=test npm run build &&  db-migrate --env test up && jasmine-ts && db-migrate db:drop test && npm run jasmine ",
     "build": "npx tsc",
     "prettier": "prettier --config .prettierrc \"src/**/*.ts\" --write",
     "lint": "eslint . --ext .ts",

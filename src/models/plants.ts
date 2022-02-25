@@ -1,4 +1,5 @@
-import client from "../database";
+// import client from "../database";
+var client = require('../database')
 
 export type plants={
     id:Number;

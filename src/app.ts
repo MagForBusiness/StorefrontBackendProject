@@ -1,5 +1,6 @@
-import client from "./database"
+// import client from "./database"
 import {plants,plantsList} from "../src/models/plants"
+var client = require('./database')
 // const client = new Client({
 //   host: "localhost",
 //   port : 5432,

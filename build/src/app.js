@@ -1,15 +1,17 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 // import client from "./database"
-// import {plants,plantsList} from "../src/models/plants"
-// // const client = new Client({
-// //   host: "localhost",
-// //   port : 5432,
-// //   user: "postgres",
-// //   password: "1234",
-// //   database: "plants_dev"
-// // })
-// client.connect();
-// // let query = `Select * from "plants"`;
-// const plants =new plantsList();
-// const result=  plants.index();
-// console.log(result);
+var plants_1 = require("../src/models/plants");
+var client = require('./database');
+// const client = new Client({
+//   host: "localhost",
+//   port : 5432,
+//   user: "postgres",
+//   password: "1234",
+//   database: "plants_dev"
+// })
+client.connect();
+// let query = `Select * from "plants"`;
+var plants = new plants_1.plantsList();
+var result = plants.index();
+console.log(result);
