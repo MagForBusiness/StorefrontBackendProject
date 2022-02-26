@@ -1,17 +1,25 @@
-// import client from "./database"
-import {plants,plantsList} from "../src/models/plants"
-var client = require('./database')
-// const client = new Client({
-//   host: "localhost",
-//   port : 5432,
-//   user: "postgres",
-//   password: "1234",
-//   database: "plants_dev"
-// })
+import {plants,plantsList} from "../src/models/plants";
+import bodyParser from 'body-parser';
+import express  from 'express';
 
-client.connect();
+//Create  application object with express()
 
-// let query = `Select * from "plants"`;
-const plants =new plantsList();
-const result=  plants.index();
-console.log(result);
+const app = express();
+
+const address:string = "0.0.0.0:3000";
+
+app.use(bodyParser.json());
+
+app.get ('/' ,async (req: express.Request, res: express.Response) => {
+    const plants =new plantsList();
+    const result= await plants.index();
+    console.log(result);
+    res.send (result);
+})
+;
+
+app.listen (3000,function(){
+    console.log(`server started at localhost:${address}`);
+})
+;
+

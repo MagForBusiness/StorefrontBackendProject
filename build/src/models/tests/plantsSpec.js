@@ -37,21 +37,66 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var plants_1 = require("../plants");
-var plants = new plants_1.plantsList();
+// @ts-ignore
+var wolrd = new plants_1.plantsList();
 describe("plant Model", function () {
     it('should have an index method', function () {
-        expect(plants.index).toBeDefined();
+        expect(wolrd.index).toBeDefined();
     });
     it('index method should be return alist of plants', function () { return __awaiter(void 0, void 0, void 0, function () {
         var result;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, plants.index()];
+                case 0: return [4 /*yield*/, wolrd.index()];
                 case 1:
                     result = _a.sent();
-                    expect(plants.index).toEqual([]);
+                    // @ts-ignore
+                    expect(result).toBe([]);
                     return [2 /*return*/];
             }
         });
     }); });
+    // it('should have a delete method', () => {
+    //   expect(store.index).toBeDefined();
+    // });
+    // it('create method should add a book', async () => {
+    //   const result = await store.create({
+    //     title: 'Bridge to Terabithia',
+    //     total_pages: 250,
+    //     author: 'Katherine Paterson',
+    //     type: 'Childrens'
+    //   });
+    //   expect(result).toEqual({
+    //     id: "1",
+    //     title: 'Bridge to Terabithia',
+    //     total_pages: 250,
+    //     author: 'Katherine Paterson',
+    //     type: 'Childrens'
+    //   });
+    // });
+    // it('index method should return a list of books', async () => {
+    //   const result = await store.index();
+    //   expect(result).toEqual([{
+    //     id: "1",
+    //     title: 'Bridge to Terabithia',
+    //     total_pages: 250,
+    //     author: 'Katherine Paterson',
+    //     type: 'Childrens'
+    //   }]);
+    // });
+    // it('show method should return the correct book', async () => {
+    //   const result = await store.show("1");
+    //   expect(result).toEqual({
+    //     id: "1",
+    //     title: 'Bridge to Terabithia',
+    //     total_pages: 250,
+    //     author: 'Katherine Paterson',
+    //     type: 'Childrens'
+    //   });
+    // });
+    // it('delete method should remove the book', async () => {
+    //   store.delete("1");
+    //   const result = await store.index()
+    //   expect(result).toEqual([]);
+    // });
 });

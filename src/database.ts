@@ -13,6 +13,7 @@ POSTGRES_TEST_DB
 
 
 let client 
+console.log(ENV)
 if(ENV === 'test'){
  client = new Pool({
     host:POSTGRES_HOST,
