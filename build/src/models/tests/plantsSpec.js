@@ -37,7 +37,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var plants_1 = require("../plants");
-// @ts-ignore
 var wolrd = new plants_1.plantsList();
 describe("plant Model", function () {
     it('should have an index method', function () {
@@ -50,7 +49,6 @@ describe("plant Model", function () {
                 case 0: return [4 /*yield*/, wolrd.index()];
                 case 1:
                     result = _a.sent();
-                    // @ts-ignore
                     expect(result).toBe([]);
                     return [2 /*return*/];
             }

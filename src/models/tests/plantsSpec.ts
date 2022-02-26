@@ -1,5 +1,5 @@
 import {plants,plantsList} from "../plants";
-// @ts-ignore
+
 const wolrd =new plantsList();
 
 describe("plant Model", () => {
@@ -7,10 +7,8 @@ describe("plant Model", () => {
       expect(wolrd.index).toBeDefined();
     });
     it('index method should be return alist of plants',async () => {
-      // @ts-ignore
-        const result =await wolrd.index();
-       // @ts-ignore
-      expect(result).toBe([]);
+            const result =await wolrd.index();
+         expect(result).toEqual([]);
     });
     // it('should have a delete method', () => {
     //   expect(store.index).toBeDefined();
