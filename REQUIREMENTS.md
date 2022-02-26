@@ -20,7 +20,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 - Current Order by user (args: user id)[token required]
 - [OPTIONAL] Completed Orders by user (args: user id)[token required]
 
-## Data Shapes
+## Data Shapes 
 #### Product
 -  id
 - name
@@ -40,3 +40,16 @@ These are the notes from a meeting with the frontend developer that describe wha
 - user_id
 - status of order (active or complete)
 
+## Project shcema:
+### Database :
+    CREATE DATABASE storefront;
+### tabels :
+//1-user table
+    CREATE TABLE IF NOT EXISTS public."user"
+(
+    id integer NOT NULL DEFAULT nextval('user_id_seq'::regclass),
+    "firstName" character varying(100) COLLATE pg_catalog."default",
+    "lastName" character varying(100) COLLATE pg_catalog."default",
+    password character varying(400) COLLATE pg_catalog."default",
+    CONSTRAINT user_pkey PRIMARY KEY (id)
+)
