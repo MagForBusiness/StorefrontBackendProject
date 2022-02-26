@@ -1,7 +1,7 @@
 import {plants,plantsList} from "../src/models/plants";
 import bodyParser from 'body-parser';
 import express  from 'express';
-
+import cors from 'cors';
 //Create  application object with express()
 
 const app = express();
