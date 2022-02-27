@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 import client from '../src/database'
 
 
-async create(u: User): Promise<User>  {
+async function create(u: User) : Promise<User>  {
     try {
       // @ts-ignore
       const conn = await client.connect()
