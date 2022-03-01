@@ -1,6 +1,6 @@
 import express from 'express'
 import { showPlants } from './handlers/plantsRout'
-import { NewUser } from './handlers/registerRout'
+import { NewUser } from './handlers/sinmupRout'
 import { LoginUser } from './handlers/signinRoute'
 var router = express.Router()
 
