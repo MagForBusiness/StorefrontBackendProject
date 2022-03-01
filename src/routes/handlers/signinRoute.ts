@@ -10,7 +10,7 @@ LoginUser.get('/', async (req: express.Request, res: express.Response) => {
     // const plants = new plantsList()
     // const result = await plants.index()
     // console.log(result)
-    res.send("the singin Route Here!")
+    res.send("the signin Route Here!")
   } catch (err) {
     res.status(400)
     res.json(err)
