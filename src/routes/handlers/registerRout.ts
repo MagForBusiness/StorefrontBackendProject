@@ -1,0 +1,30 @@
+//register New user route
+import express from 'express'
+
+//import { plants, plantsList } from '../../models/plants'
+
+// set up route
+export const NewUser = express.Router()
+NewUser.get('/', async (req: express.Request, res: express.Response) => {
+  try {
+    //  res.send("the SingUp Route Here!")
+
+    //get user info input
+    interface getUserData  { firstName:String ;lastName:String; email:String; password:String};
+    const getUserData = req.body;
+    //validate user data inputs
+    if(!(getUserData.firstName && getUserData.lastName && getUserData.email && getUserData.password  )){
+        res.status(400);
+        res.json("All input is required");
+    }
+    // check if user already exist in database or not
+    //const oldUser = await User.findOne(getUserData.email);
+    // const plants = new plantsList()
+    // const result = await plants.index()
+    // console.log(result)
+  
+  } catch (err) {
+    res.status(400);
+    res.json(err);
+  }
+})
