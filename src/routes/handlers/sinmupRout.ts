@@ -19,7 +19,12 @@ NewUser.get('/', async (req: express.Request, res: express.Response) => {
     }
     // check if user already exist in database or not
 
-      const oldUser = UserIntity.FindUserByEmail(getUserData.email);
+      const existUser =  UserIntity.FindUserByEmail(getUserData.email);
+      // @ts-ignore
+      if (existUser.rows.length) {
+        return res.status(409).send("User Already Exist. Please Login");
+      }
+      
     // const plants = new plantsList()
     // const result = await plants.index()
     // console.log(result)
