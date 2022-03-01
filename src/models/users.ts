@@ -9,6 +9,9 @@ export type users = {
     email:String; 
     password:String};
 export class UserIntity {
+  static FindUserByEmail(email: any) {
+    throw new Error('Method not implemented.');
+  }
   async index(): Promise<users[]> {
     try {
       // @ts-ignore
