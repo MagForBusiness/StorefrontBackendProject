@@ -1,16 +1,16 @@
 {
     "dev": {
       "driver": "pg",
-      "host": "localhost",
-      "database": "plants_dev",
-      "user": "postgres",
-      "password": "1234"
+      "host": {"ENV": "POSTGRES_HOST"},
+      "database": {"ENV": "POSTGRES_DB"},
+      "user": {"ENV": "POSTGRES_USER"},
+      "password": {"ENV": "POSTGRES_PASSWORD"}
     },
     "test": {
       "driver": "pg",
-      "host": "localhost",
-      "database": "postgres",
-      "user": "postgres",
-      "password": "1234"
+      "host": {"ENV": "POSTGRES_HOST"},
+      "database": {"ENV": "POSTGRES_TEST_DB"},
+      "user": {"ENV": "POSTGRES_USER"},
+      "password": {"ENV": "POSTGRES_PASSWORD"}
     }
   }
