@@ -10,10 +10,10 @@ NewUser.get('/', async (req: express.Request, res: express.Response) => {
     //  res.send("the SingUp Route Here!")
 
     //get user info input
-    interface getUserData  { firstName:String ;lastName:String; email:String; password:String};
+    interface getUserData  { firstName:String ;lastName:String;username:String; email:String; password:String};
     const getUserData = req.body;
     //validate user data inputs
-    if(!(getUserData.firstName && getUserData.lastName && getUserData.email && getUserData.password  )){
+    if(!(getUserData.firstName && getUserData.lastName && getUserData.username &&getUserData.email && getUserData.password  )){
         res.status(400);
         res.json("All input is required");
     }
