@@ -1,6 +1,6 @@
 //register New user route
 import express from 'express'
-
+import { UserIntity } from '../../models/users';
 //import { plants, plantsList } from '../../models/plants'
 
 // set up route
@@ -18,7 +18,8 @@ NewUser.get('/', async (req: express.Request, res: express.Response) => {
         res.json("All input is required");
     }
     // check if user already exist in database or not
-    //const oldUser = await User.findOne(getUserData.email);
+
+      const oldUser = await UserIntity.FindUserByEmail(getUserData.email);
     // const plants = new plantsList()
     // const result = await plants.index()
     // console.log(result)
