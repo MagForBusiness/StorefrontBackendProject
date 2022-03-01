@@ -12,7 +12,7 @@ export class UserIntity {
   static FindUserByEmail(email: any) {
     throw new Error('Method not implemented.');
   }
-  async index(): Promise<users[]> {
+  async index(): Promise<users[] | null> {
     try {
       // @ts-ignore
       const conn = await client.connect()
@@ -25,7 +25,7 @@ export class UserIntity {
       throw new Error(`Cannont get users table ${error}`)
     }
   }
-  async FindUserByEmail(email:string): Promise<users[]> {
+  async FindUserByEmail(email:string): Promise<users[] | null> {
     try {
       // @ts-ignore
       const conn = await client.connect()
