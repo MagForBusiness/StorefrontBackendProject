@@ -7,7 +7,9 @@ export type users = {
     lastName:String;
     username:String; 
     email:String; 
-    password:String};
+    password:String;
+    token :String;
+   };
 export class UserIntity {
   static FindUserByEmail(email: any) {
     throw new Error('Method not implemented.');
@@ -38,5 +40,19 @@ export class UserIntity {
       throw new Error(`Cannont get users table ${error}`)
     }
   }
+  // async CreateNewUser(u:users): Promise<users> {
+  //   try {
+  //     // @ts-ignore
+  //     const conn = await client.connect()
+  //     const sql = `INSERT INTO users (firstName,lastName,username,email,userpassword,token)
+  //                   values ()`
+  //     const result = await conn.query(sql)
+  //     conn.release()
+  //     return result.rows
+  //     console.log(result.rows)
+  //   } catch (error) {
+  //     throw new Error(`Cannont get users table ${error}`)
+  //   }
+  // }
 }
 

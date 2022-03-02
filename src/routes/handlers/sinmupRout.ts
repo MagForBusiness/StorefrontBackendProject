@@ -1,6 +1,7 @@
 //register New user route
 import express from 'express'
 import { UserIntity } from '../../models/users';
+
 //import { plants, plantsList } from '../../models/plants'
 
 // set up route
@@ -24,7 +25,9 @@ NewUser.get('/', async (req: express.Request, res: express.Response) => {
       if (existUser.rows.length) {
         return res.status(409).send("User Already Exist. Please Login");
       }
-      
+    
+       //Encrypt user password
+    // const hash = bcrypt.hashSync(getUserData.password + pepper,parseInt(SALT_ROUNDS));
     // const plants = new plantsList()
     // const result = await plants.index()
     // console.log(result)
@@ -34,3 +37,7 @@ NewUser.get('/', async (req: express.Request, res: express.Response) => {
     res.json(err);
   }
 })
+function SALT_ROUNDS(SALT_ROUNDS: any): string | number {
+  throw new Error('Function not implemented.');
+}
+
