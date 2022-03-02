@@ -13,6 +13,7 @@ NewUser.get('/', async (req: express.Request, res: express.Response) => {
     //get user info input
     interface getUserData  { firstName:String ;lastName:String;username:String; email:String; password:String};
     const getUserData = await req.body;
+    console.log(getUserData.username)
     //validate user data inputs
     if(getUserData.firstName == null || getUserData.lastName == null || getUserData.username == null || getUserData.email == null   ){
         res.status(400);
