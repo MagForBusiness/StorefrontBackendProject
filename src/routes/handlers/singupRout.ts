@@ -33,10 +33,8 @@ export const NewUser = express.Router()
     }else{
     //Encrypt user password
     // const hash = bcrypt.hashSync(getUserData.password + pepper,parseInt(SALT_ROUNDS));
-    // const plants = new plantsList()
-    // const result = await plants.index()
-    // console.log(result)
-   const newUser = await users.CreatUser(getUserData)
+    
+    const newUser = await users.CreatUser(getUserData)
     }
   }
   } catch (err) {
@@ -44,7 +42,3 @@ export const NewUser = express.Router()
     res.json(err);
   }
 })
-function SALT_ROUNDS(SALT_ROUNDS: any): string | number {
-  throw new Error('Function not implemented.');
-}
-

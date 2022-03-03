@@ -1,5 +1,10 @@
 // @ts-ignore
 import client from '../database'
+import bcrypt from 'bcrypt'
+import dotenv from 'dotenv'
+dotenv.config()
+const { BCRYPT_PASSWORD,SALT_ROUNDS } = process.env 
+
 // let client = require('../database')
 
 export type users = { 
@@ -13,10 +18,13 @@ export type users = {
 export class UserIntity {
   async CreatUser(u:users): Promise<users[] | null> {
     try {
+     
       const sql = 'INSERT INTO users (firstName, lastName, username, email,userpassword) VALUES($1, $2, $3, $4, $5) RETURNING *'
       // @ts-ignore
       const conn = await client.connect()
-      const result = await conn.query(sql,[u.firstName,u.lastName,u.username,u.email,u.password])
+      // @ts-ignore
+      const hash = bcrypt.hashSync(u.password + BCRYPT_PASSWORD ,parseInt(SALT_ROUNDS));
+      const result = await conn.query(sql,[u.firstName,u.lastName,u.username,u.email,hash])
       conn.release()
       const users= result.rows[0]
       console.log(result.rows)
