@@ -13,7 +13,7 @@ export const NewUser = express.Router()
     //get user info input
     interface getUserData  { firstName:String ;lastName:String;username:String; email:String; password:String};
     const getUserData =await req.body;
-    console.log(getUserData.username)
+    console.log(`new user is loging ${getUserData.username}`)
     //validate user data inputs
     if(getUserData.firstName == null || getUserData.lastName == null || getUserData.username == null || getUserData.email == null || getUserData.password == null   ){
         res.status(400);
