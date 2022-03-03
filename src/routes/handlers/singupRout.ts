@@ -36,6 +36,7 @@ export const NewUser = express.Router()
     
     const newUser = await users.CreatUser(getUserData)
     }
+ 
   }
   } catch (err) {
     res.status(400);
