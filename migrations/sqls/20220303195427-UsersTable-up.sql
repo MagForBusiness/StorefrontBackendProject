@@ -10,5 +10,3 @@ CREATE TABLE users
     token VARCHAR(450),
     PRIMARY KEY (user_id)
 );
-
-

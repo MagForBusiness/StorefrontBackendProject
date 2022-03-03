@@ -11,14 +11,25 @@ export type users = {
     token :String;
    };
 export class UserIntity {
-  static FindUserByEmail(email: any) {
-    throw new Error('Method not implemented.');
-  }
-  async index(): Promise<users[] | null> {
+  async CreatUser(u:users): Promise<users[] | null> {
     try {
+      const sql = 'INSERT INTO users (firstName, lastName, username, email,password) VALUES($1, $2, $3, $4, $5) RETURNING *'
       // @ts-ignore
       const conn = await client.connect()
+      const result = await conn.query(sql,[u.firstName,u.lastName,u.username,u.email,u.password])
+      conn.release()
+      const users= result.rows[0]
+      console.log(result.rows)
+      return users
+    } catch (error) {
+      throw new Error(`Cannont get users table ${error}`)
+    }
+  } 
+  async index(): Promise<users[] | null> {
+    try {
       const sql = 'SELECT * FROM users'
+      // @ts-ignore
+      const conn = await client.connect()
       const result = await conn.query(sql)
       conn.release()
       return result.rows
@@ -29,13 +40,14 @@ export class UserIntity {
   }
   async FindUserByEmail(email:string): Promise<users[] | null> {
     try {
+      
+      const sql = 'SELECT * FROM users where email = ($1)'
       // @ts-ignore
       const conn = await client.connect()
-      const sql = `SELECT * FROM users where email = '${email}'`
-      const result = await conn.query(sql)
+      const result = await conn.query(sql,[email])
       conn.release()
       return result.rows
-      console.log(result.rows)
+      console.log(result.rows.length)
     } catch (error) {
       throw new Error(`Cannont get users table ${error}`)
     }
