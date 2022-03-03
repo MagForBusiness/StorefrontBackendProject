@@ -13,7 +13,7 @@ export type users = {
 export class UserIntity {
   async CreatUser(u:users): Promise<users[] | null> {
     try {
-      const sql = 'INSERT INTO users (firstName, lastName, username, email,password) VALUES($1, $2, $3, $4, $5) RETURNING *'
+      const sql = 'INSERT INTO users (firstName, lastName, username, email,userpassword) VALUES($1, $2, $3, $4, $5) RETURNING *'
       // @ts-ignore
       const conn = await client.connect()
       const result = await conn.query(sql,[u.firstName,u.lastName,u.username,u.email,u.password])
