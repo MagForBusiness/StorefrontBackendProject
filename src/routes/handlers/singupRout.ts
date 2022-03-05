@@ -22,8 +22,8 @@ export const NewUser = express.Router()
     }else{
     // check if user already exist in database or not
     // const existUser =await UserIntity.FindUserByEmail(getUserData.email);
-    const users = new UserIntity();
-    const existUser= await users.FindUserByEmail(getUserData.email);
+    const userIntity = new UserIntity();
+    const existUser= await userIntity.FindUserByEmailandUsername(getUserData.email,getUserData.username);
     // @ts-ignore
     if (existUser.length > 0) {
      // @ts-ignore
@@ -34,7 +34,7 @@ export const NewUser = express.Router()
     }else{
     //create user 
       
-    const newUser= await users.CreatUser(getUserData);
+    const newUser= await userIntity.CreatUser(getUserData);
 
     //creat jwt and return it to user
      // @ts-ignore

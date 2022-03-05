@@ -4,11 +4,12 @@ import bcrypt from 'bcrypt'
 import dotenv from 'dotenv'
 
 dotenv.config()
-const { BCRYPT_PASSWORD,SALT_ROUNDS,TOKEN_SECRET } = process.env 
+const { BCRYPT_PASSWORD,SALT_ROUNDS } = process.env 
 
 // let client = require('../database')
 
 export type users = { 
+    id?: string;
     firstName:String ;
     lastName:String;
     username:String; 
@@ -37,7 +38,7 @@ export class UserIntity {
     }
   } 
 
-  async authenticate(username: string, password: string): Promise<users | null> {
+  async authenticate(username: string, password: string): Promise<users[] | null> {
     // @ts-ignore
     const conn = await client.connect()
     const sql = 'SELECT userpassword FROM users WHERE username=($1)'
@@ -76,13 +77,13 @@ export class UserIntity {
     }
   }
 
-  async FindUserByEmail(email:string): Promise<users[] | null> {
+  async FindUserByEmailandUsername(email:string,username:String): Promise<users[] | null> {
     try {
       
-      const sql = 'SELECT * FROM users where email = ($1)'
+      const sql = 'SELECT * FROM users where email = ($1) or username =($2)'
       // @ts-ignore
       const conn = await client.connect()
-      const result = await conn.query(sql,[email])
+      const result = await conn.query(sql,[email,username])
       conn.release()
       return result.rows
       console.log(result.rows.length)
