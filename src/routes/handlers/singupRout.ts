@@ -1,6 +1,7 @@
 //register New user route
 import express from 'express'
 import { UserIntity,users } from '../../models/users';
+import jwt from 'jsonwebtoken'
 
 //import { plants, plantsList } from '../../models/plants'
 
@@ -11,7 +12,7 @@ export const NewUser = express.Router()
     
 
     //get user info input
-    interface getUserData  { firstName:String ;lastName:String;username:String; email:String; password:String};
+    interface getUserData  { firstName:String ;lastName:String;username:String; email:String; password:String;token:String};
     const getUserData =await req.body;
     console.log(`new user is loging ${getUserData.username}`)
     //validate user data inputs
@@ -31,10 +32,20 @@ export const NewUser = express.Router()
     res.json("User Already Exist. Please Login");
      
     }else{
-    //Encrypt user password
-    // const hash = bcrypt.hashSync(getUserData.password + pepper,parseInt(SALT_ROUNDS));
-    
-    const newUser = await users.CreatUser(getUserData)
+    //create user 
+      
+    const newUser= await users.CreatUser(getUserData);
+
+    //creat jwt and return it to user
+     // @ts-ignore
+     var token=jwt.sign({user:newUser.username,email:newUser.email}, process.env.TOKEN_SECRET)
+     //save user token 
+     // @ts-ignore 
+     newUser.token = token;
+     //return new user token
+     // @ts-ignore 
+    res.status(201).json(newUser.token);
+
     }
  
   }
