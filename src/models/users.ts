@@ -25,9 +25,7 @@ export class UserIntity {
       const sql = 'INSERT INTO users (firstName, lastName, username, email,userpassword) VALUES($1, $2, $3, $4, $5) RETURNING *'
       // @ts-ignore
       const conn = await client.connect()
-      // @ts-ignore
-      const hash = bcrypt.hashSync(u.userpassword + BCRYPT_PASSWORD ,parseInt(SALT_ROUNDS));
-     
+      const hash = bcrypt.hashSync(u.userpassword + String(BCRYPT_PASSWORD) ,parseInt(String(SALT_ROUNDS)));  
       const result = await conn.query(sql,[u.firstName,u.lastName,u.username,u.email,hash])
       conn.release()
       const users= result.rows[0]

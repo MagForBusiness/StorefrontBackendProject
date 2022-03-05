@@ -2,7 +2,7 @@ import express from 'express'
 import { ShowUser } from './handlers/userRoute'
 import { NewUser } from './handlers/singupRout'
 import { LoginUser } from './handlers/signinRoute'
-import {verifyAuthToken} from '../middleware/verifyAuthToken'
+import verifyAuthToken from '../middleware/verifyAuthToken'
 
 var router = express.Router()
 
