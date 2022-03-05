@@ -14,7 +14,7 @@ LoginUser.get('/', async (req: express.Request, res: express.Response) => {
   }
   try {
     const userIntity = new UserIntity();
-    const userloged = await userIntity.authenticate(userWhologin.username, userWhologin.userpassword)
+    const userloged = await userIntity.authenticate(String(userWhologin.username),String( userWhologin.userpassword))
     // @ts-ignore
     var token = jwt.sign({ user: userloged }, process.env.TOKEN_SECRET);
     res.status(201).json(token)
