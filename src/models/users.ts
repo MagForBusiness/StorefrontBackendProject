@@ -2,8 +2,9 @@
 import client from '../database'
 import bcrypt from 'bcrypt'
 import dotenv from 'dotenv'
+import jwt from 'jsonwebtoken'
 dotenv.config()
-const { BCRYPT_PASSWORD,SALT_ROUNDS } = process.env 
+const { BCRYPT_PASSWORD,SALT_ROUNDS,TOKEN_SECRET } = process.env 
 
 // let client = require('../database')
 
@@ -20,12 +21,14 @@ export class UserIntity {
   async CreatUser(u:users): Promise<users[] | null> {
     try {
      
-      const sql = 'INSERT INTO users (firstName, lastName, username, email,userpassword) VALUES($1, $2, $3, $4, $5) RETURNING *'
+      const sql = 'INSERT INTO users (firstName, lastName, username, email,userpassword,token) VALUES($1, $2, $3, $4, $5,$6) RETURNING *'
       // @ts-ignore
       const conn = await client.connect()
       // @ts-ignore
       const hash = bcrypt.hashSync(u.password + BCRYPT_PASSWORD ,parseInt(SALT_ROUNDS));
-      const result = await conn.query(sql,[u.firstName,u.lastName,u.username,u.email,hash])
+      // @ts-ignore
+      const token=jwt.sign(u.token, TOKEN_SECRET)
+      const result = await conn.query(sql,[u.firstName,u.lastName,u.username,u.email,hash,token])
       conn.release()
       const users= result.rows[0]
       console.log(result.rows)
