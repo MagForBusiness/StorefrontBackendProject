@@ -7,6 +7,5 @@ CREATE TABLE users
     username VARCHAR(100),
     email VARCHAR(150),
     userpassword VARCHAR(150),
-    token VARCHAR(450),
     PRIMARY KEY (user_id)
 );

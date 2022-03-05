@@ -63,19 +63,38 @@ export class UserIntity {
     return null
   }
 
-  async index(): Promise<users[] | null> {
+  async index(): Promise<users[]> {
     try {
+      //@ts-ignore
+      const conn = await Client.connect()
       const sql = 'SELECT * FROM users'
-      // @ts-ignore
-      const conn = await client.connect()
+
       const result = await conn.query(sql)
+
       conn.release()
+
       return result.rows
-      console.log(result.rows)
-    } catch (error) {
-      throw new Error(`Cannont get users table ${error}`)
+    } catch (err) {
+      throw new Error(`unable get users: ${err}`)
+    } 
+  }
+
+  async show(id: string): Promise<users> {
+    try {
+      const sql = 'SELECT * FROM users WHERE id=($1)'
+      //@ts-ignoreX$
+      const conn = await Client.connect()
+
+      const result = await conn.query(sql, [id])
+
+      conn.release()
+
+      return result.rows[0]
+    } catch (err) {
+      throw new Error(`unable show user ${id}: ${err}`)
     }
   }
+
 
   async FindUserByEmailandUsername(email:string,username:String): Promise<users[] | null> {
     try {

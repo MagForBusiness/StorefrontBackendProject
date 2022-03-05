@@ -1,18 +1,20 @@
 import express from 'express'
-import { showPlants } from './handlers/plantsRout'
+import { ShowUser } from './handlers/userRoute'
 import { NewUser } from './handlers/singupRout'
 import { LoginUser } from './handlers/signinRoute'
+import {verifyAuthToken} from '../middleware/verifyAuthToken'
+
 var router = express.Router()
 
-/* GET 1- show  plant route. */
-router.use('/show-plants', showPlants)
-/* GET 2-delete plant route. */
+/* GET  user index route. */
+router.use('/user-index',verifyAuthToken, ShowUser)
 
-
-// get register (NewUser) route
+// get user register (NewUser) route
 router.use('/signup', NewUser)
+
 // get Login (NewUser) route
 router.use('/signin', LoginUser)
+
 //show msg Main router Connect
 router.get('/', (req: express.Request, res: express.Response) => {
   res.send('Main router Connect!')
