@@ -14,7 +14,7 @@ export type users = {
     lastName:String;
     username:String; 
     email:String; 
-    password:String;
+    userpassword:String;
     token:String
    };
 export class UserIntity {
@@ -26,7 +26,7 @@ export class UserIntity {
       // @ts-ignore
       const conn = await client.connect()
       // @ts-ignore
-      const hash = bcrypt.hashSync(u.password + BCRYPT_PASSWORD ,parseInt(SALT_ROUNDS));
+      const hash = bcrypt.hashSync(u.userpassword + BCRYPT_PASSWORD ,parseInt(SALT_ROUNDS));
      
       const result = await conn.query(sql,[u.firstName,u.lastName,u.username,u.email,hash])
       conn.release()
@@ -47,7 +47,7 @@ export class UserIntity {
 
     conn.release()
 
-    console.log(password+BCRYPT_PASSWORD)
+   // console.log(password+BCRYPT_PASSWORD)
 
     if(result.rows.length) {
 
@@ -55,7 +55,7 @@ export class UserIntity {
 
       console.log(users)
 
-      if (bcrypt.compareSync(password+BCRYPT_PASSWORD, users.password)) {
+      if (bcrypt.compareSync(password + BCRYPT_PASSWORD, users.userpassword)) {
         return users
       }
     }
