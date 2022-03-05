@@ -23,7 +23,7 @@ IndexUser.get('/', async (req: express.Request, res: express.Response) => {
 // set up route for show user
 export const ShowUser = express.Router()
 ShowUser.get('/', async (req: express.Request, res: express.Response) => {
-  const userid = await req.params.id;
+  const userid = String(req.query.id);
   try {
     const userIntity = new UserIntity();
     const UserByid = await userIntity.show(userid);
