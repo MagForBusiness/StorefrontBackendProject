@@ -9,7 +9,7 @@ const { BCRYPT_PASSWORD,SALT_ROUNDS } = process.env
 // let client = require('../database')
 
 export type users = { 
-    id?: string;
+    user_id?: string;
     firstName:String ;
     lastName:String;
     username:String; 
@@ -64,7 +64,7 @@ export class UserIntity {
   async index(): Promise<users[]> {
     try {
       //@ts-ignore
-      const conn = await Client.connect()
+      const conn = await client.connect()
       const sql = 'SELECT * FROM users'
 
       const result = await conn.query(sql)
@@ -77,17 +77,18 @@ export class UserIntity {
     } 
   }
 
-  async show(id: string): Promise<users> {
+  async show(id: string): Promise<users[]> {
     try {
-      const sql = 'SELECT * FROM users WHERE id=($1)'
+      const sql = 'SELECT * FROM users WHERE user_id =($1)'
       //@ts-ignoreX$
-      const conn = await Client.connect()
+      const conn = await client.connect()
 
       const result = await conn.query(sql, [id])
 
       conn.release()
 
       return result.rows[0]
+      console.log(result.rows)
     } catch (err) {
       throw new Error(`unable show user ${id}: ${err}`)
     }

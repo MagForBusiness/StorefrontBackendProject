@@ -1,5 +1,5 @@
 import express from 'express'
-import { ShowUser } from './handlers/userRoute'
+import { ShowUser,IndexUser } from './handlers/usersRoute'
 import { NewUser } from './handlers/singupRout'
 import { LoginUser } from './handlers/signinRoute'
 import verifyAuthToken from '../middleware/verifyAuthToken'
@@ -7,7 +7,10 @@ import verifyAuthToken from '../middleware/verifyAuthToken'
 var router = express.Router()
 
 /* GET  user index route. */
-router.use('/user-index',verifyAuthToken, ShowUser)
+router.use('/user-index',verifyAuthToken, IndexUser)
+
+/* GET  user show route. */
+router.use('/user',verifyAuthToken, ShowUser)
 
 // get user register (NewUser) route
 router.use('/signup', NewUser)
