@@ -5,23 +5,18 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-// set up route for show-index users
-// set up route
+// set up route for show users
 export const ShowUser = express.Router()
 ShowUser.get('/', async (req: express.Request, res: express.Response) => {
-  
-   // @ts-ignore
-  const userWhologin :users = {
-    username: req.body.username,
-    userpassword:req.body.password,
-  }
   try {
     const userIntity = new UserIntity();
-    const userloged = await userIntity.authenticate(String(userWhologin.username),String( userWhologin.userpassword))
-    var token = jwt.sign({ user: userloged },String( process.env.TOKEN_SECRET));
-    res.status(201).json(token)
+    const Userslist = await userIntity.index();
+    res.status(201)
+    res.json(Userslist)
   } catch (err) {
     res.status(400)
     res.json(err)
   }
+  
+  
 })
