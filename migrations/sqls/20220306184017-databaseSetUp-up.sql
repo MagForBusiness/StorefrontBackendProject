@@ -28,3 +28,11 @@ CREATE TABLE IF NOT EXISTS Orders
     status_of_order VARCHAR(20) DEFAULT 'active',
     CONSTRAINT "Orders_pkey" PRIMARY KEY (id)
 )
+
+CREATE INDEX IF NOT EXISTS "fki_product_foreignKey"
+    ON Orders USING btree
+    (product_id ASC NULLS LAST);
+
+CREATE INDEX IF NOT EXISTS "fki_userId"
+    ON Orders USING btree
+    (user_id ASC NULLS LAST);
