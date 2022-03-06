@@ -12,7 +12,7 @@ try{
     // @ts-ignore
     const token =authorizationHeader.split(' ')[1];
     const decoded=jwt.verify(token, String(process.env.TOKEN_SECRET));
-    console.log(`the auth has been `)
+    console.log(`Access Accept `)
     next();
  } catch(err) {
     res.status(401)
