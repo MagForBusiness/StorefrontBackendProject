@@ -36,3 +36,4 @@ CREATE INDEX IF NOT EXISTS "fki_product_foreignKey"
 CREATE INDEX IF NOT EXISTS "fki_userId"
     ON Orders USING btree
     (user_id ASC NULLS LAST);
+

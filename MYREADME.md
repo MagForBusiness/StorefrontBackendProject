@@ -17,8 +17,12 @@ because of i setup my .inv data to be ignore in GitIgnore file the content of en
  TOKEN_SECRET='ALQAHERA!45'
 
 ### 3-API Endpoints
-using postman URL Json 
+#### you can use postman URL link Json ( for test my Endpoint ) :
 https://www.getpostman.com/collections/66a1f2830f338b2bfd3a
+
+#### Or type manualy as shown below :
+
+
 
 
 
