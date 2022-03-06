@@ -1,5 +1,5 @@
 /* Replace with your SQL commands */
-CREATE TABLE users
+CREATE TABLE IF NOT EXISTS users
 (
     user_id serial NOT NULL,
     firstName VARCHAR(100),
@@ -9,3 +9,22 @@ CREATE TABLE users
     userpassword VARCHAR(150),
     PRIMARY KEY (user_id)
 );
+
+CREATE TABLE IF NOT EXISTS Product
+(
+    id serial,
+    name character varying(150),
+    price double precision,
+    category numeric,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS Orders
+(
+    id serial,
+    product_id numeric,
+    quantity double precision,
+    user_id numeric,
+    status_of_order VARCHAR(20) DEFAULT 'active',
+    CONSTRAINT "Orders_pkey" PRIMARY KEY (id)
+)
