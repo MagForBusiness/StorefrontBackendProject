@@ -1,9 +1,6 @@
 import express from 'express'
 import { UserIntity,users } from '../../models/users';
-import jwt from 'jsonwebtoken'
-import dotenv from 'dotenv'
 
-dotenv.config()
 
 // set up route for index users
 export const IndexUser = express.Router()

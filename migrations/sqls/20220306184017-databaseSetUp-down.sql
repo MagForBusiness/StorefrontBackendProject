@@ -1,6 +1,7 @@
 /* Replace with your SQL commands */
-DROP INDEX IF EXISTS public."fki_product_foreignKey";
-DROP INDEX IF EXISTS public."fki_userId";
+ALTER TABLE IF EXISTS order_prodcuts DROP CONSTRAINT IF EXISTS fky_order;
+DROP INDEX IF EXISTS "fki_userId";
+DROP TABLE order_prodcuts;
 DROP TABLE  Orders;
 DROP TABLE  Product
 DROP TABLE users;
