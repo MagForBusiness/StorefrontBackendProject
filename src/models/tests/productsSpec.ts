@@ -17,12 +17,12 @@ describe('Products Model', () => {
         price: 1450.50,
         category: 1
     });
-    expect(result).toEqual({
-      id: "1",
-      name: 'camera sony',
-      price: 1450.50,
-      category: 1
-    });
+    expect(result).toEqual({ 
+    id: 6,
+    name: 'camera sony',
+    price: 1450.50,
+    category: '1'
+   });
   });
 
   it('index method should be return alist of Products', async () => {

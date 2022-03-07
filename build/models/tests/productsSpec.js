@@ -42,6 +42,30 @@ describe('Products Model', function () {
     it('should have an index method', function () {
         expect(products.index).toBeDefined();
     });
+    // it('should have a delete method', () => {
+    //   expect(store.index).toBeDefined();
+    // });
+    it('create method should add a book', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, products.creatProduct({
+                        name: 'camera sony',
+                        price: 1450.50,
+                        category: 1
+                    })];
+                case 1:
+                    result = _a.sent();
+                    expect(result).toEqual({
+                        id: "1",
+                        name: 'camera sony',
+                        price: 1450.50,
+                        category: 1
+                    });
+                    return [2 /*return*/];
+            }
+        });
+    }); });
     it('index method should be return alist of Products', function () { return __awaiter(void 0, void 0, void 0, function () {
         var result;
         return __generator(this, function (_a) {
@@ -54,24 +78,6 @@ describe('Products Model', function () {
             }
         });
     }); });
-    // it('should have a delete method', () => {
-    //   expect(store.index).toBeDefined();
-    // });
-    // it('create method should add a book', async () => {
-    //   const result = await store.create({
-    //     title: 'Bridge to Terabithia',
-    //     total_pages: 250,
-    //     author: 'Katherine Paterson',
-    //     type: 'Childrens'
-    //   });
-    //   expect(result).toEqual({
-    //     id: "1",
-    //     title: 'Bridge to Terabithia',
-    //     total_pages: 250,
-    //     author: 'Katherine Paterson',
-    //     type: 'Childrens'
-    //   });
-    // });
     // it('index method should return a list of books', async () => {
     //   const result = await store.index();
     //   expect(result).toEqual([{

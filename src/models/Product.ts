@@ -3,7 +3,7 @@ import client from '../database'
 // let client = require('../database')
 
 export type products = {
-  id?: String
+  id?:  Number
   name: String
   price: Number
   category: Number
@@ -39,7 +39,7 @@ export class ProductsList {
     }
   }
 
-async creatProduct(p:products): Promise<products[] | null> {
+async creatProduct(p:products): Promise<products[]> {
   try {
    
     const sql = 'INSERT INTO "Product" ( name, price, category) VALUES($1, $2, $3) RETURNING *'
