@@ -39,72 +39,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserIntity = void 0;
+exports.ProductsList = void 0;
 // @ts-ignore
 var database_1 = __importDefault(require("../database"));
-var bcrypt_1 = __importDefault(require("bcrypt"));
-var dotenv_1 = __importDefault(require("dotenv"));
-dotenv_1.default.config();
-var _a = process.env, BCRYPT_PASSWORD = _a.BCRYPT_PASSWORD, SALT_ROUNDS = _a.SALT_ROUNDS;
-var UserIntity = /** @class */ (function () {
-    function UserIntity() {
+var ProductsList = /** @class */ (function () {
+    function ProductsList() {
     }
-    UserIntity.prototype.CreatUser = function (u) {
+    ProductsList.prototype.index = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var sql, conn, hash, result, users, error_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 3, , 4]);
-                        sql = 'INSERT INTO users (firstName, lastName, username, email,userpassword) VALUES($1, $2, $3, $4, $5) RETURNING *';
-                        return [4 /*yield*/, database_1.default.connect()];
-                    case 1:
-                        conn = _a.sent();
-                        hash = bcrypt_1.default.hashSync(u.userpassword + String(BCRYPT_PASSWORD), parseInt(String(SALT_ROUNDS)));
-                        return [4 /*yield*/, conn.query(sql, [u.firstName, u.lastName, u.username, u.email, hash])];
-                    case 2:
-                        result = _a.sent();
-                        conn.release();
-                        users = result.rows[0];
-                        console.log(result.rows);
-                        return [2 /*return*/, users];
-                    case 3:
-                        error_1 = _a.sent();
-                        throw new Error("Cannont get users table ".concat(error_1));
-                    case 4: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    UserIntity.prototype.authenticate = function (username, password) {
-        return __awaiter(this, void 0, void 0, function () {
-            var conn, sql, result, users;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, database_1.default.connect()];
-                    case 1:
-                        conn = _a.sent();
-                        sql = 'SELECT userpassword FROM users WHERE username=($1)';
-                        return [4 /*yield*/, conn.query(sql, [username])];
-                    case 2:
-                        result = _a.sent();
-                        conn.release();
-                        // console.log(password+BCRYPT_PASSWORD)
-                        if (result.rows.length) {
-                            users = result.rows[0];
-                            console.log(users);
-                            if (bcrypt_1.default.compareSync(password + BCRYPT_PASSWORD, users.userpassword)) {
-                                return [2 /*return*/, users];
-                            }
-                        }
-                        return [2 /*return*/, null];
-                }
-            });
-        });
-    };
-    UserIntity.prototype.index = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var conn, sql, result, err_1;
+            var conn, sql, result, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -112,28 +55,28 @@ var UserIntity = /** @class */ (function () {
                         return [4 /*yield*/, database_1.default.connect()];
                     case 1:
                         conn = _a.sent();
-                        sql = 'SELECT * FROM users';
+                        sql = 'SELECT * FROM "Product"';
                         return [4 /*yield*/, conn.query(sql)];
                     case 2:
                         result = _a.sent();
                         conn.release();
                         return [2 /*return*/, result.rows];
                     case 3:
-                        err_1 = _a.sent();
-                        throw new Error("unable get users: ".concat(err_1));
+                        error_1 = _a.sent();
+                        throw new Error("Cannont get Products ".concat(error_1));
                     case 4: return [2 /*return*/];
                 }
             });
         });
     };
-    UserIntity.prototype.show = function (id) {
+    ProductsList.prototype.show = function (id) {
         return __awaiter(this, void 0, void 0, function () {
-            var sql, conn, result, err_2;
+            var sql, conn, result, err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
-                        sql = 'SELECT * FROM users WHERE user_id =($1)';
+                        sql = 'SELECT * FROM "Product" WHERE id =($1)';
                         return [4 /*yield*/, database_1.default.connect()];
                     case 1:
                         conn = _a.sent();
@@ -143,29 +86,31 @@ var UserIntity = /** @class */ (function () {
                         conn.release();
                         return [2 /*return*/, result.rows[0]];
                     case 3:
-                        err_2 = _a.sent();
-                        throw new Error("unable show user ".concat(id, ": ").concat(err_2));
+                        err_1 = _a.sent();
+                        throw new Error("unable show user ".concat(id, ": ").concat(err_1));
                     case 4: return [2 /*return*/];
                 }
             });
         });
     };
-    UserIntity.prototype.FindUserByEmailandUsername = function (email, username) {
+    ProductsList.prototype.creatProduct = function (p) {
         return __awaiter(this, void 0, void 0, function () {
-            var sql, conn, result, error_2;
+            var sql, conn, result, newProduct, error_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
-                        sql = 'SELECT * FROM users where email = ($1) or username =($2)';
+                        sql = 'INSERT INTO "Product" ( name, price, category) VALUES($1, $2, $3) RETURNING *';
                         return [4 /*yield*/, database_1.default.connect()];
                     case 1:
                         conn = _a.sent();
-                        return [4 /*yield*/, conn.query(sql, [email, username])];
+                        return [4 /*yield*/, conn.query(sql, [p.name, p.price, p.category])];
                     case 2:
                         result = _a.sent();
                         conn.release();
-                        return [2 /*return*/, result.rows];
+                        newProduct = result.rows[0];
+                        console.log(result.rows);
+                        return [2 /*return*/, newProduct];
                     case 3:
                         error_2 = _a.sent();
                         throw new Error("Cannont get users table ".concat(error_2));
@@ -174,6 +119,6 @@ var UserIntity = /** @class */ (function () {
             });
         });
     };
-    return UserIntity;
+    return ProductsList;
 }());
-exports.UserIntity = UserIntity;
+exports.ProductsList = ProductsList;

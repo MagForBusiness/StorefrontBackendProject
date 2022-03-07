@@ -39,58 +39,84 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.NewUser = void 0;
-//register New user route
+exports.NewProduct = exports.Productshow = exports.ProductRout = void 0;
 var express_1 = __importDefault(require("express"));
-var users_1 = require("../../models/users");
-var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-//import { plants, plantsList } from '../../models/plants'
-// set up route
-exports.NewUser = express_1.default.Router();
-exports.NewUser.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var getUserData, userIntity, existUser, newUser, token, err_1;
+var Product_1 = require("../../models/Product");
+// set up route for products
+exports.ProductRout = express_1.default.Router();
+exports.ProductRout.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var productIntity, productindex, err_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 7, , 8]);
-                ;
-                return [4 /*yield*/, req.body];
+                _a.trys.push([0, 2, , 3]);
+                productIntity = new Product_1.ProductsList();
+                return [4 /*yield*/, productIntity.index()];
             case 1:
-                getUserData = _a.sent();
-                console.log("new user is loging ".concat(getUserData.username));
-                if (!(getUserData.firstName == null || getUserData.lastName == null || getUserData.username == null || getUserData.email == null || getUserData.password == null)) return [3 /*break*/, 2];
-                res.status(400);
-                res.json("All input is required");
-                return [3 /*break*/, 6];
+                productindex = _a.sent();
+                res.status(201);
+                res.json(productindex);
+                return [3 /*break*/, 3];
             case 2:
-                userIntity = new users_1.UserIntity();
-                return [4 /*yield*/, userIntity.FindUserByEmailandUsername(getUserData.email, getUserData.username)];
-            case 3:
-                existUser = _a.sent();
-                if (!(existUser.length > 0)) return [3 /*break*/, 4];
-                // @ts-ignore
-                console.log("return row [".concat(existUser.length, "]"));
-                res.status(400);
-                res.json("User Already Exist. Please Login");
-                return [3 /*break*/, 6];
-            case 4: return [4 /*yield*/, userIntity.CreatUser(getUserData)];
-            case 5:
-                newUser = _a.sent();
-                token = jsonwebtoken_1.default.sign({ user: newUser.username, email: newUser.email }, process.env.TOKEN_SECRET);
-                //save user token 
-                // @ts-ignore 
-                newUser.token = token;
-                //return new user token
-                // @ts-ignore 
-                res.status(201).json(newUser.token);
-                _a.label = 6;
-            case 6: return [3 /*break*/, 8];
-            case 7:
                 err_1 = _a.sent();
                 res.status(400);
                 res.json(err_1);
-                return [3 /*break*/, 8];
-            case 8: return [2 /*return*/];
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+exports.Productshow = express_1.default.Router();
+exports.Productshow.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var productId, productIntity, product, err_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                productId = String(req.query.id);
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                productIntity = new Product_1.ProductsList();
+                return [4 /*yield*/, productIntity.show(productId)];
+            case 2:
+                product = _a.sent();
+                res.status(201);
+                res.json(product);
+                return [3 /*break*/, 4];
+            case 3:
+                err_2 = _a.sent();
+                res.status(400);
+                res.json(err_2);
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    });
+}); });
+exports.NewProduct = express_1.default.Router();
+exports.NewProduct.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var getpoductData, productIntity, product, err_3;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                return [4 /*yield*/, req.body];
+            case 1:
+                getpoductData = _a.sent();
+                _a.label = 2;
+            case 2:
+                _a.trys.push([2, 4, , 5]);
+                productIntity = new Product_1.ProductsList();
+                return [4 /*yield*/, productIntity.creatProduct(getpoductData)];
+            case 3:
+                product = _a.sent();
+                res.status(201);
+                res.json(product);
+                return [3 /*break*/, 5];
+            case 4:
+                err_3 = _a.sent();
+                res.status(400);
+                res.json(err_3);
+                return [3 /*break*/, 5];
+            case 5: return [2 /*return*/];
         }
     });
 }); });

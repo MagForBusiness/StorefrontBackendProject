@@ -10,46 +10,45 @@ CREATE TABLE IF NOT EXISTS users
     PRIMARY KEY (user_id)
 );
 
-CREATE TABLE IF NOT EXISTS Product
-(
-    id serial,
-    name character varying(150),
-    price double precision,
-    category numeric,
-    PRIMARY KEY (id)
-);
+-- CREATE TABLE IF NOT EXISTS Product
+-- (
+--     id serial,
+--     name character varying(150),
+--     price double precision,
+--     category numeric,
+--     PRIMARY KEY (id)
+-- );
 
-CREATE TABLE IF NOT EXISTS Orders
-(
-    id serial,
-    user_id numeric,
-    status_of_order VARCHAR(20) DEFAULT 'active',
-    CONSTRAINT "Orders_pkey" PRIMARY KEY (id)
-)
-CREATE TABLE IF NOT EXISTS order_prodcuts
-(
-    order_id integer,
-    product_id integer,
-    quantity double precision,
-    CONSTRAINT pk_order_product PRIMARY KEY (order_id, product_id),
-    CONSTRAINT fky_product FOREIGN KEY (product_id)
-        REFERENCES "Product" (id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
-        NOT VALID
-);
+-- CREATE TABLE IF NOT EXISTS Orders
+-- (
+--     id serial,
+--     user_id numeric,
+--     status_of_order VARCHAR(20) DEFAULT 'active',
+--     CONSTRAINT "Orders_pkey" PRIMARY KEY (id)
+-- )
+-- CREATE TABLE IF NOT EXISTS order_prodcuts
+-- (
+--     order_id integer,
+--     product_id integer,
+--     quantity double precision,
+--     CONSTRAINT pk_order_product PRIMARY KEY (order_id, product_id),
+--     CONSTRAINT fky_product FOREIGN KEY (product_id)
+--         REFERENCES "Product" (id) MATCH SIMPLE
+--         ON UPDATE NO ACTION
+--         ON DELETE NO ACTION
+--         NOT VALID
+-- );
 
 
-CREATE INDEX IF NOT EXISTS "fki_userId"
-    ON Orders USING btree
-    (user_id ASC NULLS LAST);
+-- CREATE INDEX IF NOT EXISTS "fki_userId"
+--     ON Orders USING btree
+--     (user_id ASC NULLS LAST);
 
-ALTER TABLE IF EXISTS public.order_prodcuts
-    ADD CONSTRAINT fky_order FOREIGN KEY (order_id)
-    REFERENCES public."Orders" (id) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION
-    NOT VALID;
-
+-- ALTER TABLE IF EXISTS public.order_prodcuts
+--     ADD CONSTRAINT fky_order FOREIGN KEY (order_id)
+--     REFERENCES public."Orders" (id) MATCH SIMPLE
+--     ON UPDATE NO ACTION
+--     ON DELETE NO ACTION
+--     NOT VALID;
 
 
