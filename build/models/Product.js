@@ -55,7 +55,7 @@ var ProductsList = /** @class */ (function () {
                         return [4 /*yield*/, database_1.default.connect()];
                     case 1:
                         conn = _a.sent();
-                        sql = 'SELECT * FROM "Product"';
+                        sql = 'SELECT * FROM Product';
                         return [4 /*yield*/, conn.query(sql)];
                     case 2:
                         result = _a.sent();
@@ -63,7 +63,7 @@ var ProductsList = /** @class */ (function () {
                         return [2 /*return*/, result.rows];
                     case 3:
                         error_1 = _a.sent();
-                        throw new Error("Cannont get Products ".concat(error_1));
+                        throw new Error("Can not get Products ".concat(error_1));
                     case 4: return [2 /*return*/];
                 }
             });
@@ -76,7 +76,7 @@ var ProductsList = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
-                        sql = 'SELECT * FROM "Product" WHERE id =($1)';
+                        sql = 'SELECT * FROM Product WHERE id =($1)';
                         return [4 /*yield*/, database_1.default.connect()];
                     case 1:
                         conn = _a.sent();
@@ -87,7 +87,7 @@ var ProductsList = /** @class */ (function () {
                         return [2 /*return*/, result.rows[0]];
                     case 3:
                         err_1 = _a.sent();
-                        throw new Error("unable show user ".concat(id, ": ").concat(err_1));
+                        throw new Error("unable show product ".concat(id, ": ").concat(err_1));
                     case 4: return [2 /*return*/];
                 }
             });
@@ -100,7 +100,7 @@ var ProductsList = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
-                        sql = 'INSERT INTO "Product" ( name, price, category) VALUES($1, $2, $3) RETURNING *';
+                        sql = 'INSERT INTO Product ( name, price, category) VALUES($1, $2, $3) RETURNING *';
                         return [4 /*yield*/, database_1.default.connect()];
                     case 1:
                         conn = _a.sent();
@@ -113,7 +113,7 @@ var ProductsList = /** @class */ (function () {
                         return [2 /*return*/, newProduct];
                     case 3:
                         error_2 = _a.sent();
-                        throw new Error("Cannont get users table ".concat(error_2));
+                        throw new Error("Cannont get Product table for creat ".concat(error_2));
                     case 4: return [2 /*return*/];
                 }
             });

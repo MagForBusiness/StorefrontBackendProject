@@ -45,27 +45,6 @@ describe('Products Model', function () {
     // it('should have a delete method', () => {
     //   expect(store.index).toBeDefined();
     // });
-    it('create method should add a book', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var result;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, products.creatProduct({
-                        name: 'camera sony',
-                        price: 1450.50,
-                        category: 1
-                    })];
-                case 1:
-                    result = _a.sent();
-                    expect(result).toEqual({
-                        id: "1",
-                        name: 'camera sony',
-                        price: 1450.50,
-                        category: 1
-                    });
-                    return [2 /*return*/];
-            }
-        });
-    }); });
     it('index method should be return alist of Products', function () { return __awaiter(void 0, void 0, void 0, function () {
         var result;
         return __generator(this, function (_a) {
@@ -73,11 +52,29 @@ describe('Products Model', function () {
                 case 0: return [4 /*yield*/, products.index()];
                 case 1:
                     result = _a.sent();
-                    expect(result).toEqual([]);
+                    expect(result).toEqual([{
+                            id: 1,
+                            name: 'camera sony',
+                            price: 1450.50,
+                            category: 1
+                        }]);
                     return [2 /*return*/];
             }
         });
     }); });
+    // it('create method should add a product', async () => {
+    //   const result = await products.creatProduct({
+    //       name: 'camera sony',
+    //       price: 1450.50,
+    //       category: 1
+    //   });
+    //   expect(result).toEqual([{ 
+    //   id: 1,
+    //   name: 'camera sony',
+    //   price: 1450.50,
+    //   category: 1
+    //  }]);
+    // });
     // it('index method should return a list of books', async () => {
     //   const result = await store.index();
     //   expect(result).toEqual([{
@@ -88,15 +85,14 @@ describe('Products Model', function () {
     //     type: 'Childrens'
     //   }]);
     // });
-    // it('show method should return the correct book', async () => {
-    //   const result = await store.show("1");
-    //   expect(result).toEqual({
-    //     id: "1",
-    //     title: 'Bridge to Terabithia',
-    //     total_pages: 250,
-    //     author: 'Katherine Paterson',
-    //     type: 'Childrens'
-    //   });
+    // it('show method should return the correct product', async () => {
+    //   const result = await products.show("4");
+    //   expect(result).toEqual([{
+    //     id: 4,
+    //     name: 'camera sony',
+    //     price: 1450.50,
+    //     category: 1
+    //   }]);
     // });
     // it('delete method should remove the book', async () => {
     //   store.delete("1");

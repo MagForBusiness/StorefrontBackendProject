@@ -13,18 +13,18 @@ export class ProductsList {
     try {
       // @ts-ignore
       const conn = await client.connect()
-      const sql = 'SELECT * FROM "Product"'
+      const sql = 'SELECT * FROM Product'
       const result = await conn.query(sql)
       conn.release()
       return result.rows
       console.log(result.rows)
     } catch (error) {
-      throw new Error(`Cannont get Products ${error}`)
+      throw new Error(`Can not get Products ${error}`)
     }
   }
   async show(id: string): Promise<products[]> {
     try {
-      const sql = 'SELECT * FROM "Product" WHERE id =($1)'
+      const sql = 'SELECT * FROM Product WHERE id =($1)'
       //@ts-ignoreX$
       const conn = await client.connect()
 
@@ -35,14 +35,14 @@ export class ProductsList {
       return result.rows[0]
       console.log(result.rows)
     } catch (err) {
-      throw new Error(`unable show user ${id}: ${err}`)
+      throw new Error(`unable show product ${id}: ${err}`)
     }
   }
 
 async creatProduct(p:products): Promise<products[]> {
   try {
    
-    const sql = 'INSERT INTO "Product" ( name, price, category) VALUES($1, $2, $3) RETURNING *'
+    const sql = 'INSERT INTO Product ( name, price, category) VALUES($1, $2, $3) RETURNING *'
     // @ts-ignore
     const conn = await client.connect()
     const result = await conn.query(sql,[p.name,p.price,p.category])
@@ -51,7 +51,7 @@ async creatProduct(p:products): Promise<products[]> {
     console.log(result.rows)
     return newProduct
   } catch (error) {
-    throw new Error(`Cannont get users table ${error}`)
+    throw new Error(`Cannont get Product table for creat ${error}`)
   }
 } 
 }
