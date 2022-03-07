@@ -3,7 +3,7 @@ import client from '../database'
 // let client = require('../database')
 
 export type products = {
-  id?: Number
+  id?: String
   name: String
   price: Number
   category: Number

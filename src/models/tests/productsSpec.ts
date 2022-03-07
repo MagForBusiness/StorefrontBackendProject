@@ -1,34 +1,34 @@
 import { products, ProductsList } from '../Product'
 
-const wolrd = new ProductsList()
+const products = new ProductsList()
 
 describe('Products Model', () => {
   it('should have an index method', () => {
-    expect(wolrd.index).toBeDefined()
+    expect(products.index).toBeDefined()
   })
-  it('index method should be return alist of plants', async () => {
-    const result = await wolrd.index()
-    expect(result).toEqual([])
-  })
+  
   // it('should have a delete method', () => {
   //   expect(store.index).toBeDefined();
   // });
 
-  // it('create method should add a book', async () => {
-  //   const result = await store.create({
-  //     title: 'Bridge to Terabithia',
-  //     total_pages: 250,
-  //     author: 'Katherine Paterson',
-  //     type: 'Childrens'
-  //   });
-  //   expect(result).toEqual({
-  //     id: "1",
-  //     title: 'Bridge to Terabithia',
-  //     total_pages: 250,
-  //     author: 'Katherine Paterson',
-  //     type: 'Childrens'
-  //   });
-  // });
+  it('create method should add a book', async () => {
+    const result = await products.creatProduct({
+        name: 'camera sony',
+        price: 1450.50,
+        category: 1
+    });
+    expect(result).toEqual({
+      id: "1",
+      name: 'camera sony',
+      price: 1450.50,
+      category: 1
+    });
+  });
+
+  it('index method should be return alist of Products', async () => {
+    const result = await products.index()
+    expect(result).toEqual([])
+  })
 
   // it('index method should return a list of books', async () => {
   //   const result = await store.index();

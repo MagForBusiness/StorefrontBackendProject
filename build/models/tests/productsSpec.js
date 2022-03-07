@@ -37,16 +37,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var Product_1 = require("../Product");
-var wolrd = new Product_1.ProductsList();
+var products = new Product_1.ProductsList();
 describe('Products Model', function () {
     it('should have an index method', function () {
-        expect(wolrd.index).toBeDefined();
+        expect(products.index).toBeDefined();
     });
-    it('index method should be return alist of plants', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('index method should be return alist of Products', function () { return __awaiter(void 0, void 0, void 0, function () {
         var result;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, wolrd.index()];
+                case 0: return [4 /*yield*/, products.index()];
                 case 1:
                     result = _a.sent();
                     expect(result).toEqual([]);
