@@ -14,11 +14,7 @@ const corsOptions = {
 }
 //cors
 app.use(cors(corsOptions))
-// app.get ('/test-cors' , cors(corsOptions) , (req: express.Request, res: express.Response,next) => {
-//      res.json ({msg:`cors with the middle ware`);
-//      next();
-// })
-// ;
+
 
 //Routs map
 app.use(bodyParser.json())

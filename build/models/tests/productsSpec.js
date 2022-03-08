@@ -42,61 +42,73 @@ describe('Products Model', function () {
     it('should have an index method', function () {
         expect(products.index).toBeDefined();
     });
-    // it('should have a delete method', () => {
-    //   expect(store.index).toBeDefined();
-    // });
-    it('index method should be return alist of Products', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('should have a delete method', function () {
+        expect(products.index).toBeDefined();
+    });
+    it('should have acreate method', function () {
+        expect(products.creatProduct).toBeDefined();
+    });
+    it('should have show method', function () {
+        expect(products.show).toBeDefined();
+    });
+    it('create method should add a product', function () { return __awaiter(void 0, void 0, void 0, function () {
         var result;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, products.index()];
+                case 0: return [4 /*yield*/, products.creatProduct({
+                        name: 'camera sony',
+                        price: 1450.50,
+                        category: 1
+                    })];
                 case 1:
                     result = _a.sent();
-                    expect(result).toEqual([{
-                            id: 1,
-                            name: 'camera sony',
-                            price: 1450.50,
-                            category: 1
-                        }]);
+                    // @ts-ignore
+                    expect(result).toEqual({ id: 1, name: 'camera sony', price: 1450.5, category: '1' });
                     return [2 /*return*/];
             }
         });
     }); });
-    // it('create method should add a product', async () => {
-    //   const result = await products.creatProduct({
-    //       name: 'camera sony',
-    //       price: 1450.50,
-    //       category: 1
-    //   });
-    //   expect(result).toEqual([{ 
-    //   id: 1,
-    //   name: 'camera sony',
-    //   price: 1450.50,
-    //   category: 1
-    //  }]);
-    // });
-    // it('index method should return a list of books', async () => {
-    //   const result = await store.index();
-    //   expect(result).toEqual([{
-    //     id: "1",
-    //     title: 'Bridge to Terabithia',
-    //     total_pages: 250,
-    //     author: 'Katherine Paterson',
-    //     type: 'Childrens'
-    //   }]);
-    // });
-    // it('show method should return the correct product', async () => {
-    //   const result = await products.show("4");
-    //   expect(result).toEqual([{
-    //     id: 4,
-    //     name: 'camera sony',
-    //     price: 1450.50,
-    //     category: 1
-    //   }]);
-    // });
-    // it('delete method should remove the book', async () => {
-    //   store.delete("1");
-    //   const result = await store.index()
-    //   expect(result).toEqual([]);
-    // });
+    it('index method should be return alist of Products', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, products.index()
+                    // @ts-ignore
+                ];
+                case 1:
+                    result = _a.sent();
+                    // @ts-ignore
+                    expect(result).toEqual([{ id: 1, name: 'camera sony', price: 1450.5, category: '1' }]);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('show method should return the correct product', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, products.show("1")];
+                case 1:
+                    result = _a.sent();
+                    // @ts-ignore
+                    expect(result).toEqual({ id: 1, name: 'camera sony', price: 1450.5, category: '1' });
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('delete method should remove the product', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    products.delete("1");
+                    products.resetproudctIdSequences();
+                    return [4 /*yield*/, products.index()];
+                case 1:
+                    result = _a.sent();
+                    expect(result).toEqual([]);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
 });

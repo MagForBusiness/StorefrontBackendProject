@@ -1,12 +1,21 @@
 "use strict";
-// import { UserIntity,users } from "../users"
-// const UserTest = new UserIntity()
-// describe('users Model', () => {
-//   it('should have an index method', () => {
-//     expect(UserTest.index).toBeDefined()
-//   })
-//   // it('index method should be return alist of users', async () => {
-//   //   const result = await UserTest.index()
-//   //   expect(result).toEqual([])
-//   // })
-// })
+Object.defineProperty(exports, "__esModule", { value: true });
+var users_1 = require("../users");
+var UserTest = new users_1.UserIntity();
+describe('users Model', function () {
+    it('should have an index method', function () {
+        expect(UserTest.index).toBeDefined();
+    });
+    it('should have an index method', function () {
+        expect(UserTest.index).toBeDefined();
+    });
+    it('should have a delete method', function () {
+        expect(UserTest.index).toBeDefined();
+    });
+    it('should have acreate method', function () {
+        expect(UserTest.CreatUser).toBeDefined();
+    });
+    it('should have show method', function () {
+        expect(UserTest.show).toBeDefined();
+    });
+});

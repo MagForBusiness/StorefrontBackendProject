@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "migrate": "db-migrate --env dev up && db-migrate up ",
-    "test": "set ENV=test && db-migrate --env test up && npm run build && npm run jasmine && db-migrate db:drop test",
+    "test": "SET ENV=test && db-migrate --env test up && npm run build && npm run jasmine && db-migrate db:drop test",
     "build": "npx tsc",
     "prettier": "prettier --config .prettierrc \"src/**/*.ts\" --write",
     "lint": "eslint . --ext .ts",

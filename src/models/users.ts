@@ -15,7 +15,6 @@ export type users = {
     username:String; 
     email:String; 
     userpassword:String;
-    token:String
    };
 export class UserIntity {
 
@@ -109,6 +108,32 @@ export class UserIntity {
       throw new Error(`Cannont get users table ${error}`)
     }
   }
- 
+  async delete(id: string): Promise<users> {
+    try {
+     
+      const sql = 'DELETE FROM users  WHERE id=($1)'
+      const conn = await client.connect()
+      const result = await conn.query(sql,[id])
+      conn.release()
+      const newusers= result.rows[0]
+      return newusers
+    } catch (error) {
+      throw new Error(`Cannont get users table for creat ${error}`)
+    }
+  } 
+  // this function used to testing purpose
+  async resetuserIdSequences(): Promise<users> {
+    try {
+     
+      const sql = 'ALTER SEQUENCE users_user_id_seq  RESTART;'
+      const conn = await client.connect()
+      const result = await conn.query(sql)
+      conn.release()
+      const newuser= result.rows[0]
+      return newuser
+    } catch (error) {
+      throw new Error(`Cannont resetSequences users_user_id_seq ${error}`)
+    }
+  } 
 }
 

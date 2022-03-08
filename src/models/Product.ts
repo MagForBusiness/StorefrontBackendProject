@@ -1,4 +1,3 @@
-// @ts-ignore
 import client from '../database'
 // let client = require('../database')
 
@@ -11,7 +10,7 @@ export type products = {
 export class ProductsList {
   async index(): Promise<products[]> {
     try {
-      // @ts-ignore
+
       const conn = await client.connect()
       const sql = 'SELECT * FROM Product'
       const result = await conn.query(sql)
@@ -25,7 +24,7 @@ export class ProductsList {
   async show(id: string): Promise<products[]> {
     try {
       const sql = 'SELECT * FROM Product WHERE id =($1)'
-      //@ts-ignoreX$
+
       const conn = await client.connect()
 
       const result = await conn.query(sql, [id])
@@ -43,7 +42,6 @@ async creatProduct(p:products): Promise<products[]> {
   try {
    
     const sql = 'INSERT INTO Product ( name, price, category) VALUES($1, $2, $3) RETURNING *'
-    // @ts-ignore
     const conn = await client.connect()
     const result = await conn.query(sql,[p.name,p.price,p.category])
     conn.release()
@@ -54,4 +52,32 @@ async creatProduct(p:products): Promise<products[]> {
     throw new Error(`Cannont get Product table for creat ${error}`)
   }
 } 
+async delete(id: string): Promise<products> {
+  try {
+   
+    const sql = 'DELETE FROM Product  WHERE id=($1)'
+    const conn = await client.connect()
+    const result = await conn.query(sql,[id])
+    conn.release()
+    const newProduct= result.rows[0]
+    return newProduct
+  } catch (error) {
+    throw new Error(`Cannont get Product table for creat ${error}`)
+  }
+} 
+// this function used to testing purpose
+async resetproudctIdSequences(): Promise<products> {
+  try {
+   
+    const sql = 'ALTER SEQUENCE product_id_seq  RESTART;'
+    const conn = await client.connect()
+    const result = await conn.query(sql)
+    conn.release()
+    const newProduct= result.rows[0]
+    return newProduct
+  } catch (error) {
+    throw new Error(`Cannont resetSequences product_id_seq ${error}`)
+  }
+} 
 }
+

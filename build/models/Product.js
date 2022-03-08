@@ -40,7 +40,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductsList = void 0;
-// @ts-ignore
 var database_1 = __importDefault(require("../database"));
 var ProductsList = /** @class */ (function () {
     function ProductsList() {
@@ -114,6 +113,57 @@ var ProductsList = /** @class */ (function () {
                     case 3:
                         error_2 = _a.sent();
                         throw new Error("Cannont get Product table for creat ".concat(error_2));
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ProductsList.prototype.delete = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var sql, conn, result, newProduct, error_3;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        sql = 'DELETE FROM Product  WHERE id=($1)';
+                        return [4 /*yield*/, database_1.default.connect()];
+                    case 1:
+                        conn = _a.sent();
+                        return [4 /*yield*/, conn.query(sql, [id])];
+                    case 2:
+                        result = _a.sent();
+                        conn.release();
+                        newProduct = result.rows[0];
+                        return [2 /*return*/, newProduct];
+                    case 3:
+                        error_3 = _a.sent();
+                        throw new Error("Cannont get Product table for creat ".concat(error_3));
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    // this function used to testing purpose
+    ProductsList.prototype.resetproudctIdSequences = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var sql, conn, result, newProduct, error_4;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        sql = 'ALTER SEQUENCE product_id_seq  RESTART;';
+                        return [4 /*yield*/, database_1.default.connect()];
+                    case 1:
+                        conn = _a.sent();
+                        return [4 /*yield*/, conn.query(sql)];
+                    case 2:
+                        result = _a.sent();
+                        conn.release();
+                        newProduct = result.rows[0];
+                        return [2 /*return*/, newProduct];
+                    case 3:
+                        error_4 = _a.sent();
+                        throw new Error("Cannont resetSequences product_id_seq ".concat(error_4));
                     case 4: return [2 /*return*/];
                 }
             });

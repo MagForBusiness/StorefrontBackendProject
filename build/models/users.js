@@ -174,6 +174,57 @@ var UserIntity = /** @class */ (function () {
             });
         });
     };
+    UserIntity.prototype.delete = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var sql, conn, result, newusers, error_3;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        sql = 'DELETE FROM users  WHERE id=($1)';
+                        return [4 /*yield*/, database_1.default.connect()];
+                    case 1:
+                        conn = _a.sent();
+                        return [4 /*yield*/, conn.query(sql, [id])];
+                    case 2:
+                        result = _a.sent();
+                        conn.release();
+                        newusers = result.rows[0];
+                        return [2 /*return*/, newusers];
+                    case 3:
+                        error_3 = _a.sent();
+                        throw new Error("Cannont get users table for creat ".concat(error_3));
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    // this function used to testing purpose
+    UserIntity.prototype.resetuserIdSequences = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var sql, conn, result, newuser, error_4;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        sql = 'ALTER SEQUENCE users_user_id_seq  RESTART;';
+                        return [4 /*yield*/, database_1.default.connect()];
+                    case 1:
+                        conn = _a.sent();
+                        return [4 /*yield*/, conn.query(sql)];
+                    case 2:
+                        result = _a.sent();
+                        conn.release();
+                        newuser = result.rows[0];
+                        return [2 /*return*/, newuser];
+                    case 3:
+                        error_4 = _a.sent();
+                        throw new Error("Cannont resetSequences users_user_id_seq ".concat(error_4));
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
     return UserIntity;
 }());
 exports.UserIntity = UserIntity;
