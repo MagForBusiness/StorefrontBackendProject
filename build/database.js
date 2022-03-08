@@ -10,6 +10,7 @@ var _a = process.env, POSTGRES_HOST = _a.POSTGRES_HOST, POSTGRES_DB = _a.POSTGRE
 var client;
 console.log(ENV);
 if (ENV === 'test') {
+    console.log(ENV + "tesssssst");
     client = new pg_1.Pool({
         host: POSTGRES_HOST,
         database: POSTGRES_TEST_DB,
