@@ -4,7 +4,7 @@
 ### 1- database Shcema setup:
   using  migration to setup Project database ( databaseSetUp  ).
 ### 2- managing environment variables
-because of i setup my .inv data to be ignore in GitIgnore file the content of env is:
+#### my .inv  :
 
  POSTGRES_HOST= 'localhost'
  POSTGRES_DB= 'storefront'
@@ -25,9 +25,9 @@ https://www.getpostman.com/collections/66a1f2830f338b2bfd3a
 
 #### Or type manualy as shown below :
 #### Products
-- Index                  [] 
-- Show
-- Create [token required]
+- Index                  [localhost:3000/products-index] 
+- Show                   [localhost:3000/product?id=1]
+- Create [token required] [localhost:3000/add-product]
 - [OPTIONAL] Top 5 most popular products 
 - [OPTIONAL] Products by category(args: product category) 
 
@@ -37,7 +37,7 @@ https://www.getpostman.com/collections/66a1f2830f338b2bfd3a
 - Create N[token required]      [localhost:3000/signup]
 
 #### Orders
-- Current Order by user (args: user id)[token required]
+- Current Order by user (args: user id)[token required]   [localhost:3000/ActiveorderbyuserId?id=9]
 - [OPTIONAL] Completed Orders by user (args: user id)[token required]
 
 

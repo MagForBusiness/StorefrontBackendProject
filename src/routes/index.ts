@@ -4,6 +4,7 @@ import { NewUser } from './handlers/singupRout'
 import { LoginUser } from './handlers/signinRoute'
 import verifyAuthToken from '../middleware/verifyAuthToken'
 import {ProductRout,Productshow,NewProduct} from './handlers/ProductRouts'
+import {productsInActiveOrder} from './handlers/dashboardRouts'
 
 var router = express.Router()
 
@@ -29,9 +30,14 @@ router.use('/product', Productshow)
 /* GET  Creat New product  route. */
 router.use('/add-product',verifyAuthToken, NewProduct)
 
+/* get productsInActiveOrderby user id */
+router.use('/ActiveorderbyuserId',verifyAuthToken, productsInActiveOrder)
+
 //show msg Main router Connect
 router.get('/', (req: express.Request, res: express.Response) => {
   res.send('Main router Connect!')
 })
+
+
 
 export default router

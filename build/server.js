@@ -22,3 +22,4 @@ app.use('/', index_1.default);
 app.listen(3000, function () {
     console.log("server started at localhost:".concat(address));
 });
+exports.default = app;
