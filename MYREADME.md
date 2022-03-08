@@ -8,13 +8,16 @@ because of i setup my .inv data to be ignore in GitIgnore file the content of en
 
  POSTGRES_HOST= 'localhost'
  POSTGRES_DB= 'storefront'
- POSTGRES_TEST_DB= 'postgres'
+ POSTGRES_TEST_DB= 'frontstoretest'
+ POSTGRES_TEST_USER= 'mag'
+ POSTGRES_TEST_PASSWORD= 'mag123'
  POSTGRES_USER= 'postgres'
  POSTGRES_PASSWORD= '1234'
  ENV='dev'
  BCRYPT_PASSWORD='speak-friend-and-enter'
  SALT_ROUNDS='10'
  TOKEN_SECRET='ALQAHERA!45'
+
 
 ### 3-API Endpoints
 #### you can use postman URL link Json ( for test my Endpoint ) :
