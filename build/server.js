@@ -16,11 +16,6 @@ var corsOptions = {
 };
 //cors
 app.use((0, cors_1.default)(corsOptions));
-// app.get ('/test-cors' , cors(corsOptions) , (req: express.Request, res: express.Response,next) => {
-//      res.json ({msg:`cors with the middle ware`);
-//      next();
-// })
-// ;
 //Routs map
 app.use(body_parser_1.default.json());
 app.use('/', index_1.default);
