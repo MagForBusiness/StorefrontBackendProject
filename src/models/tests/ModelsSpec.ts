@@ -1,5 +1,5 @@
 import { products, ProductsList } from '../Product'
-import {DashboardQueries} from '../../Services/dashboard'
+import { DashboardQueries } from '../../Services/dashboard'
 
 const dashboardQueries = new DashboardQueries()
 const products = new ProductsList()
@@ -23,7 +23,6 @@ describe('Products Model', () => {
   it('should have an index productsInActiveOrdersbyuser', () => {
     expect(dashboardQueries.productsInActiveOrdersbyuser).toBeDefined()
   })
-  
 
   it('create method should add a product', async () => {
     const result = await products.creatProduct({
