@@ -1,4 +1,7 @@
 /* Replace with your SQL commands */
+
+
+
 CREATE TABLE IF NOT EXISTS users
 (
     user_id serial NOT NULL,

@@ -53,35 +53,43 @@ exports.NewUser.get('/', function (req, res) { return __awaiter(void 0, void 0, 
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 7, , 8]);
-                ;
                 return [4 /*yield*/, req.body];
             case 1:
                 getUserData = _a.sent();
                 console.log("new user is loging ".concat(getUserData.username));
-                if (!(getUserData.firstName == null || getUserData.lastName == null || getUserData.username == null || getUserData.email == null || getUserData.password == null)) return [3 /*break*/, 2];
+                if (!(getUserData.firstName == null ||
+                    getUserData.lastName == null ||
+                    getUserData.username == null ||
+                    getUserData.email == null ||
+                    getUserData.password == null)) return [3 /*break*/, 2];
                 res.status(400);
-                res.json("All input is required");
+                res.json('All input is required');
                 return [3 /*break*/, 6];
             case 2:
                 userIntity = new users_1.UserIntity();
-                return [4 /*yield*/, userIntity.FindUserByEmailandUsername(getUserData.email, getUserData.username)];
+                return [4 /*yield*/, userIntity.FindUserByEmailandUsername(getUserData.email, getUserData.username)
+                    // @ts-ignore
+                ];
             case 3:
                 existUser = _a.sent();
                 if (!(existUser.length > 0)) return [3 /*break*/, 4];
                 // @ts-ignore
                 console.log("return row [".concat(existUser.length, "]"));
                 res.status(400);
-                res.json("User Already Exist. Please Login");
+                res.json('User Already Exist. Please Login');
                 return [3 /*break*/, 6];
-            case 4: return [4 /*yield*/, userIntity.CreatUser(getUserData)];
+            case 4: return [4 /*yield*/, userIntity.CreatUser(getUserData)
+                //creat jwt and return it to user
+                // @ts-ignore
+            ];
             case 5:
                 newUser = _a.sent();
                 token = jsonwebtoken_1.default.sign({ user: newUser.username, email: newUser.email }, process.env.TOKEN_SECRET);
-                //save user token 
-                // @ts-ignore 
+                //save user token
+                // @ts-ignore
                 newUser.token = token;
                 //return new user token
-                // @ts-ignore 
+                // @ts-ignore
                 res.status(201).json(newUser.token);
                 _a.label = 6;
             case 6: return [3 /*break*/, 8];

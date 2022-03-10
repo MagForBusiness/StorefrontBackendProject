@@ -4,19 +4,18 @@ import jwt from 'jsonwebtoken'
 
 dotenv.config()
 
-
-const verifyAuthToken = (req: express.Request, res: express.Response,next: Function)=> {
-try{
+const verifyAuthToken = (req: express.Request, res: express.Response, next: Function) => {
+  try {
     //Get Token Befor proceed
-   const authorizationHeader = req.headers.authorization;
+    const authorizationHeader = req.headers.authorization
     // @ts-ignore
-    const token =authorizationHeader.split(' ')[1];
-    const decoded=jwt.verify(token, String(process.env.TOKEN_SECRET));
+    const token = authorizationHeader.split(' ')[1]
+    const decoded = jwt.verify(token, String(process.env.TOKEN_SECRET))
     console.log(`Access Accept `)
-    next();
- } catch(err) {
+    next()
+  } catch (err) {
     res.status(401)
     res.json('Access denied, invalid token')
+  }
 }
-}
-export default verifyAuthToken;
+export default verifyAuthToken

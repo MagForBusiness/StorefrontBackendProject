@@ -2,7 +2,27 @@
 # Storefront Backend Project
 ## set up 
 ### 1- database Shcema setup:
-  using  migration to setup Project database ( databaseSetUp  ).
+   #### A - create a database for test and production :
+  CREATE DATABASE frontstoretest
+    WITH 
+    OWNER = mag
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'en_US.utf8'
+    LC_CTYPE = 'en_US.utf8'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+  CREATE DATABASE storefront
+      WITH 
+      OWNER = postgres
+      ENCODING = 'UTF8'
+      LC_COLLATE = 'en_US.utf8'
+      LC_CTYPE = 'en_US.utf8'
+      TABLESPACE = pg_default
+      CONNECTION LIMIT = -1;
+  #### B - using  migration to setup Project database ( databaseSetUp  ).
+ 
+
 ### 2- managing environment variables
 #### my .inv  :
 

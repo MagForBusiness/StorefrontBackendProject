@@ -15,7 +15,6 @@ const corsOptions = {
 //cors
 app.use(cors(corsOptions))
 
-
 //Routs map
 app.use(bodyParser.json())
 app.use('/', router)
@@ -23,4 +22,4 @@ app.use('/', router)
 app.listen(3000, function () {
   console.log(`server started at localhost:${address}`)
 })
-export default app;
+export default app
