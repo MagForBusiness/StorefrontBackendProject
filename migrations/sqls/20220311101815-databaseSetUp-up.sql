@@ -39,6 +39,11 @@ CREATE TABLE IF NOT EXISTS order_prodcuts
         REFERENCES Product (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
+        NOT VALID,
+    CONSTRAINT fky_order FOREIGN KEY (order_id)
+        REFERENCES Orders (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
         NOT VALID
 );
 
@@ -47,11 +52,5 @@ CREATE INDEX IF NOT EXISTS "fki_userId"
     ON Orders USING btree
     (user_id ASC NULLS LAST);
 
-ALTER TABLE IF  EXISTS order_prodcuts
-    ADD CONSTRAINT fky_order FOREIGN KEY (order_id)
-    REFERENCES Orders (id) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION
-    NOT VALID;
 
 

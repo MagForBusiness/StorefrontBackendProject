@@ -29,7 +29,7 @@ Productshow.get('/', async (req: express.Request, res: express.Response) => {
 })
 
 export const NewProduct = express.Router()
-NewProduct.get('/', async (req: express.Request, res: express.Response) => {
+NewProduct.post('/', async (req: express.Request, res: express.Response) => {
   type getpoductData = {
     name: String
     price: Number

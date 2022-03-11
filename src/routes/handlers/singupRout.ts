@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken'
 
 // set up route
 export const NewUser = express.Router()
-NewUser.get('/', async (req: express.Request, res: express.Response) => {
+NewUser.post('/', async (req: express.Request, res: express.Response) => {
   try {
     //get user info input
     interface getUserData {

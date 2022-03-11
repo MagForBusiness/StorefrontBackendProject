@@ -47,7 +47,7 @@ var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 //import { plants, plantsList } from '../../models/plants'
 // set up route
 exports.NewUser = express_1.default.Router();
-exports.NewUser.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+exports.NewUser.post('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var getUserData, userIntity, existUser, newUser, token, err_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
