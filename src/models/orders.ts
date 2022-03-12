@@ -10,7 +10,7 @@ export class ordersList {
   async index(): Promise<orders[]> {
     try {
       const conn = await client.connect()
-      const sql = 'SELECT * FROM "Orders";'
+      const sql = 'SELECT * FROM Orders;'
       const result = await conn.query(sql)
       conn.release()
       return result.rows
@@ -21,7 +21,7 @@ export class ordersList {
   }
   async show(id: string): Promise<orders[]> {
     try {
-      const sql = 'SELECT * FROM "Orders" WHERE id =($1)'
+      const sql = 'SELECT * FROM Orders WHERE id =($1)'
 
       const conn = await client.connect()
 
@@ -36,9 +36,9 @@ export class ordersList {
     }
   }
 
-  async creatOrder(p: orders): Promise<orders[]> {
+  async creatOrder(p:orders): Promise<orders[]> {
     try {
-      const sql = 'INSERT INTO Orders ( user_id,status_of_order) VALUES($1,$2) RETURNING *'
+      const sql = 'INSERT INTO Orders (user_id,status_of_order) VALUES($1,$2) RETURNING *'
       const conn = await client.connect()
       const result = await conn.query(sql, [p.user_id,p.status_of_order])
       conn.release()

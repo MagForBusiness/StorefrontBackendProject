@@ -77,7 +77,7 @@ describe('orders Model', function () {
                 case 2:
                     result = _a.sent();
                     // @ts-ignore
-                    expect(result).toEqual({ id: 1, user_id: '1', status_of_order: 'active' });
+                    expect(result).toEqual({ id: 1, user_id: 1, status_of_order: 'active' });
                     return [2 /*return*/];
             }
         });
@@ -92,12 +92,12 @@ describe('orders Model', function () {
                 case 1:
                     result = _a.sent();
                     // @ts-ignore
-                    expect(result).toEqual([{ id: 1, name: 'camera sony', price: 1450.5, category: '1' }]);
+                    expect(result).toEqual([{ id: 1, user_id: 1, status_of_order: 'active' }]);
                     return [2 /*return*/];
             }
         });
     }); });
-    it('show method should return the correct product', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('show method should return the correct order', function () { return __awaiter(void 0, void 0, void 0, function () {
         var result;
         return __generator(this, function (_a) {
             switch (_a.label) {
