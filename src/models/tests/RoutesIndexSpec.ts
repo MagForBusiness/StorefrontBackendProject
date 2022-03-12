@@ -30,9 +30,9 @@ describe('Test endpoints Routers responses', () => {
     const response = await request.get('/signin')
     expect(response.status).toBe(201)
   })
-  it('gets the api (localhost:3000/orders?id=7) endpoint', async () => {
-    const response = await request.get('/orders?id=7')
-    expect(response.status).toBe(401)
+  it('gets the api (localhost:3000/orders?id=1) endpoint', async () => {
+    const response = await request.get('/orders?id=1')
+    expect(response.status).toBe(201)
   })
   it('gets the api (localhost:3000/orders-index) endpoint', async () => {
     const response = await request.get('/orders-index')
@@ -40,7 +40,7 @@ describe('Test endpoints Routers responses', () => {
   })
   it('gets the api (localhost:3000/NewOrder) endpoint', async () => {
     const response = await request.get('/NewOrder')
-    expect(response.status).toBe(401)
+    expect(response.status).toBe(201)
   })
   it('gets the api (localhost:3000/ActiveorderbyuserId?id=9) endpoint', async () => {
     const response = await request.get('/signin')
