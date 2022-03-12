@@ -16,12 +16,12 @@ OrderRout.get('/', async (req: express.Request, res: express.Response) => {
 })
 export const ordershow = express.Router()
 ordershow.get('/', async (req: express.Request, res: express.Response) => {
-  const productId = String(req.query.id)
+  const orderId = String(req.query.id)
   try {
     const vordersList = new ordersList()
-    const product = await vordersList.show(productId)
+    const orderout = await vordersList.show(orderId)
     res.status(201)
-    res.json(product)
+    res.json(orderout)
   } catch (err) {
     res.status(400)
     res.json(err)
