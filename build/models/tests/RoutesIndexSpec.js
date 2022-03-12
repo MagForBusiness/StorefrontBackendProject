@@ -42,7 +42,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var server_1 = __importDefault(require("../../server"));
 var supertest_1 = __importDefault(require("supertest"));
 var orders_1 = require("../orders");
-var Product_1 = require("../Product");
 //test EndPoints
 var request = (0, supertest_1.default)(server_1.default);
 describe('Test endpoints Routers responses', function () {
@@ -59,25 +58,13 @@ describe('Test endpoints Routers responses', function () {
         });
     }); });
     it('gets the api (localhost:3000/add-product) endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var response, vproductList;
+        var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.post('/add-product').send({
-                        id: 1,
-                        name: null,
-                        price: null,
-                        category: null
-                    })];
+                case 0: return [4 /*yield*/, request.post('/add-product')];
                 case 1:
                     response = _a.sent();
-                    expect(response.status).toBe(201);
-                    vproductList = new Product_1.ProductsList();
-                    return [4 /*yield*/, vproductList.delete('1')];
-                case 2:
-                    _a.sent();
-                    return [4 /*yield*/, vproductList.resetproudctIdSequences()];
-                case 3:
-                    _a.sent();
+                    expect(response.status).toBe(401);
                     return [2 /*return*/];
             }
         });

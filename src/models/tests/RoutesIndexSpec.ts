@@ -11,16 +11,8 @@ describe('Test endpoints Routers responses', () => {
     expect(response.status).toBe(201)
   })
   it('gets the api (localhost:3000/add-product) endpoint', async () => {
-    const response = await request.post('/add-product').send({
-      id:1,
-      name: null,
-      price: null,
-      category: null})
-    expect(response.status).toBe(201)
-    const vproductList = new ProductsList()
-    await vproductList.delete('1')
-    await vproductList.resetproudctIdSequences()
-    
+    const response = await request.post('/add-product')
+    expect(response.status).toBe(401)    
   })
   
   it('gets the api (localhost:3000/product?id=1) endpoint', async () => {
