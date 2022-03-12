@@ -34,6 +34,8 @@ router.use('/orders', OrderRouts_1.ordershow);
 router.use('/orders-index', OrderRouts_1.OrderRout);
 /* GET  order index route. */
 router.use('/NewOrder', OrderRouts_1.NewOrder);
+/* GET  order delete route. */
+router.use('/deletOrder', OrderRouts_1.deletOrder);
 /* get productsInActiveOrderby user id */
 router.use('/ActiveorderbyuserId', verifyAuthToken_1.default, dashboardRouts_1.productsInActiveOrder);
 //show msg Main router Connect

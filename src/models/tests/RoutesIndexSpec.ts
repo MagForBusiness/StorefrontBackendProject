@@ -1,7 +1,7 @@
 import app from '../../server'
-
 import supertest from 'supertest'
 import {ordersList} from '../orders'
+import {ProductsList} from '../Product'
 //test EndPoints
 const request = supertest(app)
 
@@ -11,9 +11,18 @@ describe('Test endpoints Routers responses', () => {
     expect(response.status).toBe(201)
   })
   it('gets the api (localhost:3000/add-product) endpoint', async () => {
-    const response = await request.get('/add-product')
-    expect(response.status).toBe(401)
+    const response = await request.post('/add-product').send({
+      id:1,
+      name: null,
+      price: null,
+      category: null})
+    expect(response.status).toBe(201)
+    const vproductList = new ProductsList()
+    await vproductList.delete('1')
+    await vproductList.resetproudctIdSequences()
+    
   })
+  
   it('gets the api (localhost:3000/product?id=1) endpoint', async () => {
     const response = await request.get('/product?id=1')
     expect(response.status).toBe(201)
@@ -45,7 +54,9 @@ describe('Test endpoints Routers responses', () => {
       status_of_order:null})
     expect(response.status).toBe(201)
     const vordersList = new ordersList()
-    const product = await vordersList.delete('1')
+    await vordersList.delete('1')
+    await vordersList.resetproudctIdSequences()
+
   })
   it('gets the api (localhost:3000/ActiveorderbyuserId?id=9) endpoint', async () => {
     const response = await request.get('/ActiveorderbyuserId?id=9')

@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.NewOrder = exports.ordershow = exports.OrderRout = void 0;
+exports.deletOrder = exports.NewOrder = exports.ordershow = exports.OrderRout = void 0;
 var express_1 = __importDefault(require("express"));
 var orders_1 = require("../../models/orders");
 // set up route for orders
@@ -117,6 +117,32 @@ exports.NewOrder.post('/', function (req, res) { return __awaiter(void 0, void 0
                 res.json(err_3);
                 return [3 /*break*/, 5];
             case 5: return [2 /*return*/];
+        }
+    });
+}); });
+exports.deletOrder = express_1.default.Router();
+exports.deletOrder.delete('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var getorderData, vordersList, product, err_4;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                getorderData = String(req.query.id);
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                vordersList = new orders_1.ordersList();
+                return [4 /*yield*/, vordersList.delete(getorderData)];
+            case 2:
+                product = _a.sent();
+                res.status(201);
+                res.json(product);
+                return [3 /*break*/, 4];
+            case 3:
+                err_4 = _a.sent();
+                res.status(400);
+                res.json(err_4);
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
         }
     });
 }); });
