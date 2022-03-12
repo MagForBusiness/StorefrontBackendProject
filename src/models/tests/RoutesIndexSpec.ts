@@ -12,7 +12,7 @@ describe('Test endpoints Routers responses', () => {
   })
   it('gets the api (localhost:3000/add-product) endpoint', async () => {
     const response = await request.get('/add-product')
-    expect(response.status).toBe(201)
+    expect(response.status).toBe(401)
   })
   it('gets the api (localhost:3000/product?id=1) endpoint', async () => {
     const response = await request.get('/product?id=1')
@@ -40,7 +40,7 @@ describe('Test endpoints Routers responses', () => {
   })
   it('gets the api (localhost:3000/NewOrder) endpoint', async () => {
     const response = await request.get('/NewOrder')
-    expect(response.status).toBe(401)
+    expect(response.status).toBe(404)
   })
   it('gets the api (localhost:3000/ActiveorderbyuserId?id=9) endpoint', async () => {
     const response = await request.get('/ActiveorderbyuserId?id=9')
