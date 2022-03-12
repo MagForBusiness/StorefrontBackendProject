@@ -1,7 +1,7 @@
 import app from '../../server'
 
 import supertest from 'supertest'
-
+import {ordersList} from '../orders'
 //test EndPoints
 const request = supertest(app)
 
@@ -43,8 +43,9 @@ describe('Test endpoints Routers responses', () => {
       id:1,
       user_id:null,
       status_of_order:null})
-      .de('/deletOrder').send('1')
     expect(response.status).toBe(201)
+    const vordersList = new ordersList()
+    const product = await vordersList.delete('1')
   })
   it('gets the api (localhost:3000/ActiveorderbyuserId?id=9) endpoint', async () => {
     const response = await request.get('/ActiveorderbyuserId?id=9')
