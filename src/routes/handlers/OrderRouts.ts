@@ -30,16 +30,15 @@ ordershow.get('/', async (req: express.Request, res: express.Response) => {
 
 export const NewOrder = express.Router()
 NewOrder.post('/', async (req: express.Request, res: express.Response) => {
-  type getpoductData = {
-    name: String
-    price: Number
-    category: Number
+  type getorderData = {
+    user_id: Number
+    status_of_order: String 
   }
-  const getpoductData = await req.body
+  const getorderData = await req.body
 
   try {
     const vordersList = new ordersList()
-    const product = await vordersList.creatOrder(getpoductData)
+    const product = await vordersList.creatOrder(getorderData)
     res.status(201)
     res.json(product)
   } catch (err) {

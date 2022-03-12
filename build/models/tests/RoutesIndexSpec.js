@@ -116,14 +116,38 @@ describe('Test endpoints Routers responses', function () {
             }
         });
     }); });
-    it('gets the api (localhost:3000/signup) endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('gets the api (localhost:3000/orders?id=7) endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('/signin')];
+                case 0: return [4 /*yield*/, request.get('/orders?id=7')];
+                case 1:
+                    response = _a.sent();
+                    expect(response.status).toBe(401);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('gets the api (localhost:3000/orders-index) endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, request.get('/orders-index')];
                 case 1:
                     response = _a.sent();
                     expect(response.status).toBe(201);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('gets the api (localhost:3000/NewOrder) endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, request.get('/NewOrder')];
+                case 1:
+                    response = _a.sent();
+                    expect(response.status).toBe(401);
                     return [2 /*return*/];
             }
         });

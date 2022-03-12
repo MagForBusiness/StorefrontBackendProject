@@ -130,3 +130,7 @@ https://www.getpostman.com/collections/66a1f2830f338b2bfd3a
 - Current Order by user (args: user id)[token required]   [localhost:3000/ActiveorderbyuserId?id=9]
 - [OPTIONAL] Completed Orders by user (args: user id)[token required]
 
+### Orders endpoint [OPTIONAL Reviwer Ask me to do it]
+- Index [localhost:3000/orders-index]
+- Create[localhost:3000/NewOrder]
+-show [localhost:3000/orders?id=1]
