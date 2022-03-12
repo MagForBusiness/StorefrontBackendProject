@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken'
 
 // set up route
 export const LoginUser = express.Router()
-LoginUser.get('/', async (req: express.Request, res: express.Response) => {
+LoginUser.post('/', async (req: express.Request, res: express.Response) => {
   // @ts-ignore
   const userWhologin: users = {
     username: req.body.username,

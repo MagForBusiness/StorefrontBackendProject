@@ -46,7 +46,7 @@ var users_1 = require("../../models/users");
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 // set up route
 exports.LoginUser = express_1.default.Router();
-exports.LoginUser.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+exports.LoginUser.post('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var userWhologin, userIntity, userloged, token, err_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
