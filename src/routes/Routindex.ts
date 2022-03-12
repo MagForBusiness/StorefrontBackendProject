@@ -5,7 +5,7 @@ import { LoginUser } from './handlers/signinRoute'
 import verifyAuthToken from '../middleware/verifyAuthToken'
 import { ProductRout, Productshow, NewProduct } from './handlers/ProductRouts'
 import { productsInActiveOrder } from './handlers/dashboardRouts'
-import {ordershow,OrderRout} from './handlers/OrderRouts'
+import {ordershow,OrderRout,NewOrder} from './handlers/OrderRouts'
 
 var router = express.Router()
 
@@ -35,9 +35,9 @@ router.use('/add-product', verifyAuthToken, NewProduct)
 /* GET  order show route. */
 router.use('/orders', ordershow)
 /* GET  order index route. */
-router.use('/orders-index',OrderRout)
+router.use('/orders-index', OrderRout)
 /* GET  order index route. */
-router.use('/NewOrder',OrderRout)
+router.use('/NewOrder', NewOrder)
 
 
 /* get productsInActiveOrderby user id */
