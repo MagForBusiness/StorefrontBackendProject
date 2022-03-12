@@ -44,7 +44,7 @@
 );
 
 
-CREATE TABLE IF NOT EXISTS Orders
+CREATE TABLE IF NOT EXISTS orders
 (
     id serial,
     user_id numeric,
