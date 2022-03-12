@@ -93,7 +93,7 @@ exports.Productshow.get('/', function (req, res) { return __awaiter(void 0, void
     });
 }); });
 exports.NewProduct = express_1.default.Router();
-exports.NewProduct.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+exports.NewProduct.post('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var getpoductData, productIntity, product, err_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
