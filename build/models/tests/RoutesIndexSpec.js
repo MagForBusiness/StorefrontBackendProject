@@ -144,10 +144,14 @@ describe('Test endpoints Routers responses', function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('/NewOrder')];
+                case 0: return [4 /*yield*/, request.post('/NewOrder').send({
+                        id: 1,
+                        user_id: null,
+                        status_of_order: null
+                    })];
                 case 1:
                     response = _a.sent();
-                    expect(response.status).toBe(404);
+                    expect(response.status).toBe(201);
                     return [2 /*return*/];
             }
         });

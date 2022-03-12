@@ -46,3 +46,17 @@ NewOrder.post('/', async (req: express.Request, res: express.Response) => {
     res.json(err)
   }
 })
+export const deletOrder = express.Router()
+deletOrder.delete('/', async (req: express.Request, res: express.Response) => {
+   const getorderData = String(req.query.id)
+
+  try {
+    const vordersList = new ordersList()
+    const product = await vordersList.delete(getorderData)
+    res.status(201)
+    res.json(product)
+  } catch (err) {
+    res.status(400)
+    res.json(err)
+  }
+})

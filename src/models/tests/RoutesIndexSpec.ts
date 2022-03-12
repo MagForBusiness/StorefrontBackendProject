@@ -39,8 +39,12 @@ describe('Test endpoints Routers responses', () => {
     expect(response.status).toBe(201)
   })
   it('gets the api (localhost:3000/NewOrder) endpoint', async () => {
-    const response = await request.get('/NewOrder')
-    expect(response.status).toBe(404)
+    const response = await request.post('/NewOrder').send({
+      id:1,
+      user_id:null,
+      status_of_order:null})
+      .de('/deletOrder').send('1')
+    expect(response.status).toBe(201)
   })
   it('gets the api (localhost:3000/ActiveorderbyuserId?id=9) endpoint', async () => {
     const response = await request.get('/ActiveorderbyuserId?id=9')
