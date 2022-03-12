@@ -63,7 +63,7 @@ describe('Test endpoints Routers responses', function () {
                 case 0: return [4 /*yield*/, request.get('/add-product')];
                 case 1:
                     response = _a.sent();
-                    expect(response.status).toBe(401);
+                    expect(response.status).toBe(201);
                     return [2 /*return*/];
             }
         });
@@ -144,10 +144,10 @@ describe('Test endpoints Routers responses', function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.post('/NewOrder')];
+                case 0: return [4 /*yield*/, request.get('/NewOrder')];
                 case 1:
                     response = _a.sent();
-                    expect(response.status).toBe(201);
+                    expect(response.status).toBe(401);
                     return [2 /*return*/];
             }
         });
