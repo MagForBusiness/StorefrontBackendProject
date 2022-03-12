@@ -54,7 +54,7 @@ var ordersList = /** @class */ (function () {
                         return [4 /*yield*/, database_1.default.connect()];
                     case 1:
                         conn = _a.sent();
-                        sql = 'SELECT * FROM Orders;';
+                        sql = 'SELECT * FROM orders;';
                         return [4 /*yield*/, conn.query(sql)];
                     case 2:
                         result = _a.sent();
@@ -75,7 +75,7 @@ var ordersList = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
-                        sql = 'SELECT * FROM Orders WHERE id =($1)';
+                        sql = 'SELECT * FROM orders WHERE id =($1)';
                         return [4 /*yield*/, database_1.default.connect()];
                     case 1:
                         conn = _a.sent();
@@ -99,7 +99,7 @@ var ordersList = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
-                        sql = 'INSERT INTO Orders (user_id,status_of_order) VALUES($1,$2) RETURNING *';
+                        sql = 'INSERT INTO orders (user_id,status_of_order) VALUES($1,$2) RETURNING *';
                         return [4 /*yield*/, database_1.default.connect()];
                     case 1:
                         conn = _a.sent();
@@ -125,7 +125,7 @@ var ordersList = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
-                        sql = 'DELETE FROM Orders  WHERE id=($1)';
+                        sql = 'DELETE FROM orders  WHERE id=($1)';
                         return [4 /*yield*/, database_1.default.connect()];
                     case 1:
                         conn = _a.sent();
@@ -151,7 +151,7 @@ var ordersList = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
-                        sql = 'ALTER SEQUENCE Orders_id_seq  RESTART;';
+                        sql = 'ALTER SEQUENCE orders_id_seq  RESTART;';
                         return [4 /*yield*/, database_1.default.connect()];
                     case 1:
                         conn = _a.sent();

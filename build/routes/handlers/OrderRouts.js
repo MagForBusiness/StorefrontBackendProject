@@ -68,20 +68,20 @@ exports.OrderRout.get('/', function (req, res) { return __awaiter(void 0, void 0
 }); });
 exports.ordershow = express_1.default.Router();
 exports.ordershow.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var productId, vordersList, product, err_2;
+    var orderId, vordersList, orderout, err_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                productId = String(req.query.id);
+                orderId = String(req.query.id);
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
                 vordersList = new orders_1.ordersList();
-                return [4 /*yield*/, vordersList.show(productId)];
+                return [4 /*yield*/, vordersList.show(orderId)];
             case 2:
-                product = _a.sent();
+                orderout = _a.sent();
                 res.status(201);
-                res.json(product);
+                res.json(orderout);
                 return [3 /*break*/, 4];
             case 3:
                 err_2 = _a.sent();

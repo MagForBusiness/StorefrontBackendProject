@@ -33,7 +33,7 @@ router.use('/orders', OrderRouts_1.ordershow);
 /* GET  order index route. */
 router.use('/orders-index', OrderRouts_1.OrderRout);
 /* GET  order index route. */
-router.use('/NewOrder', OrderRouts_1.OrderRout);
+router.use('/NewOrder', OrderRouts_1.NewOrder);
 /* get productsInActiveOrderby user id */
 router.use('/ActiveorderbyuserId', verifyAuthToken_1.default, dashboardRouts_1.productsInActiveOrder);
 //show msg Main router Connect

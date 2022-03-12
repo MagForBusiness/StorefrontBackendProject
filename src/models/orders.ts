@@ -10,7 +10,7 @@ export class ordersList {
   async index(): Promise<orders[]> {
     try {
       const conn = await client.connect()
-      const sql = 'SELECT * FROM Orders;'
+      const sql = 'SELECT * FROM orders;'
       const result = await conn.query(sql)
       conn.release()
       return result.rows
@@ -21,7 +21,7 @@ export class ordersList {
   }
   async show(id: string): Promise<orders[]> {
     try {
-      const sql = 'SELECT * FROM Orders WHERE id =($1)'
+      const sql = 'SELECT * FROM orders WHERE id =($1)'
 
       const conn = await client.connect()
 
@@ -38,7 +38,7 @@ export class ordersList {
 
   async creatOrder(p:orders): Promise<orders[]> {
     try {
-      const sql = 'INSERT INTO Orders (user_id,status_of_order) VALUES($1,$2) RETURNING *'
+      const sql = 'INSERT INTO orders (user_id,status_of_order) VALUES($1,$2) RETURNING *'
       const conn = await client.connect()
       const result = await conn.query(sql, [p.user_id,p.status_of_order])
       conn.release()
@@ -51,7 +51,7 @@ export class ordersList {
   }
   async delete(id: string): Promise<orders> {
     try {
-      const sql = 'DELETE FROM Orders  WHERE id=($1)'
+      const sql = 'DELETE FROM orders  WHERE id=($1)'
       const conn = await client.connect()
       const result = await conn.query(sql, [id])
       conn.release()
@@ -64,7 +64,7 @@ export class ordersList {
   // this function used to testing purpose
   async resetproudctIdSequences(): Promise<orders> {
     try {
-      const sql = 'ALTER SEQUENCE Orders_id_seq  RESTART;'
+      const sql = 'ALTER SEQUENCE orders_id_seq  RESTART;'
       const conn = await client.connect()
       const result = await conn.query(sql)
       conn.release()
