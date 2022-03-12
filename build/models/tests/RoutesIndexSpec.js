@@ -78,7 +78,6 @@ describe('Test endpoints Routers responses', function () {
                     return [4 /*yield*/, vproductList.resetproudctIdSequences()];
                 case 3:
                     _a.sent();
-                    expect(response.status).toBe(201);
                     return [2 /*return*/];
             }
         });
