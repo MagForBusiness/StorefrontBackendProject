@@ -147,7 +147,7 @@ describe('Test endpoints Routers responses', function () {
                 case 0: return [4 /*yield*/, request.get('/NewOrder')];
                 case 1:
                     response = _a.sent();
-                    expect(response.status).toBe(201);
+                    expect(response.status).toBe(404);
                     return [2 /*return*/];
             }
         });

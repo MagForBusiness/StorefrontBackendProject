@@ -40,7 +40,7 @@ describe('Test endpoints Routers responses', () => {
   })
   it('gets the api (localhost:3000/NewOrder) endpoint', async () => {
     const response = await request.get('/NewOrder')
-    expect(response.status).toBe(201)
+    expect(response.status).toBe(404)
   })
   it('gets the api (localhost:3000/ActiveorderbyuserId?id=9) endpoint', async () => {
     const response = await request.get('/signin')
