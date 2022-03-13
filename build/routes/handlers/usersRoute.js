@@ -73,7 +73,7 @@ exports.ShowUser.get('/', function (req, res) { return __awaiter(void 0, void 0,
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                userid = String(req.query.id);
+                userid = req.params.id;
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);

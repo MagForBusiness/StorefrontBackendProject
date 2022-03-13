@@ -15,7 +15,7 @@ var router = express_1.default.Router();
 /* GET  user index route. */
 router.use('/user-index', verifyAuthToken_1.default, usersRoute_1.IndexUser);
 /* GET  user show route. */
-router.use('/user', verifyAuthToken_1.default, usersRoute_1.ShowUser);
+router.use('/user/:id', verifyAuthToken_1.default, usersRoute_1.ShowUser);
 // get user register (NewUser) route
 router.use('/signup', singupRout_1.NewUser);
 // get Login (NewUser) route
@@ -24,18 +24,18 @@ router.use('/signin', signinRoute_1.LoginUser);
 /* GET  products index route. */
 router.use('/products-index', ProductRouts_1.ProductRout);
 /* GET  products show route. */
-router.use('/product', ProductRouts_1.Productshow);
+router.use('/product/:id', ProductRouts_1.Productshow);
 /* GET  Creat New product  route. */
 router.use('/add-product', verifyAuthToken_1.default, ProductRouts_1.NewProduct);
 //orders
 /* GET  order show route. */
-router.use('/orders', OrderRouts_1.ordershow);
+router.use('/orders/:id', OrderRouts_1.ordershow);
 /* GET  order index route. */
 router.use('/orders-index', OrderRouts_1.OrderRout);
 /* GET  order index route. */
 router.use('/NewOrder', OrderRouts_1.NewOrder);
 /* GET  order delete route. */
-router.use('/deletOrder', OrderRouts_1.deletOrder);
+router.use('/deletOrder/:id', OrderRouts_1.deletOrder);
 /* get productsInActiveOrderby user id */
 router.use('/ActiveorderbyuserId', verifyAuthToken_1.default, dashboardRouts_1.productsInActiveOrder);
 //show msg Main router Connect

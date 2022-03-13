@@ -73,7 +73,7 @@ describe('Test endpoints Routers responses', function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('/product?id=1')];
+                case 0: return [4 /*yield*/, request.get('/product/:id=1')];
                 case 1:
                     response = _a.sent();
                     expect(response.status).toBe(201);
@@ -81,11 +81,11 @@ describe('Test endpoints Routers responses', function () {
             }
         });
     }); });
-    it('gets the api (localhost:3000/user?id=7) endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('gets the api (localhost:3000/user/:id=7) endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('/user?id=7')];
+                case 0: return [4 /*yield*/, request.get('/user/:id=7')];
                 case 1:
                     response = _a.sent();
                     expect(response.status).toBe(401);
@@ -117,11 +117,11 @@ describe('Test endpoints Routers responses', function () {
             }
         });
     }); });
-    it('gets the api (localhost:3000/orders?id=1) endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('gets the api (localhost:3000/orders/:id=1) endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('/orders?id=1')];
+                case 0: return [4 /*yield*/, request.get('/orders/:id=1')];
                 case 1:
                     response = _a.sent();
                     expect(response.status).toBe(201);

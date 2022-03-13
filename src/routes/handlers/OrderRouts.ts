@@ -16,7 +16,7 @@ OrderRout.get('/', async (req: express.Request, res: express.Response) => {
 })
 export const ordershow = express.Router()
 ordershow.get('/', async (req: express.Request, res: express.Response) => {
-  const orderId = String(req.query.id)
+  const orderId = req.params.id
   try {
     const vordersList = new ordersList()
     const orderout = await vordersList.show(orderId)
@@ -48,7 +48,7 @@ NewOrder.post('/', async (req: express.Request, res: express.Response) => {
 })
 export const deletOrder = express.Router()
 deletOrder.delete('/', async (req: express.Request, res: express.Response) => {
-   const getorderData = String(req.query.id)
+   const getorderData = req.params.id
 
   try {
     const vordersList = new ordersList()

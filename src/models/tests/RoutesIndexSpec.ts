@@ -16,11 +16,11 @@ describe('Test endpoints Routers responses', () => {
   })
   
   it('gets the api (localhost:3000/product?id=1) endpoint', async () => {
-    const response = await request.get('/product?id=1')
+    const response = await request.get('/product/:id=1')
     expect(response.status).toBe(201)
   })
-  it('gets the api (localhost:3000/user?id=7) endpoint', async () => {
-    const response = await request.get('/user?id=7')
+  it('gets the api (localhost:3000/user/:id=7) endpoint', async () => {
+    const response = await request.get('/user/:id=7')
     expect(response.status).toBe(401)
   })
   it('gets the api (localhost:3000/user-index) endpoint', async () => {
@@ -31,8 +31,8 @@ describe('Test endpoints Routers responses', () => {
     const response = await request.post('/signin')
     expect(response.status).toBe(201)
   })
-  it('gets the api (localhost:3000/orders?id=1) endpoint', async () => {
-    const response = await request.get('/orders?id=1')
+  it('gets the api (localhost:3000/orders/:id=1) endpoint', async () => {
+    const response = await request.get('/orders/:id=1')
     expect(response.status).toBe(201)
   })
   it('gets the api (localhost:3000/orders-index) endpoint', async () => {

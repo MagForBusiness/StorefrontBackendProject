@@ -16,7 +16,7 @@ ProductRout.get('/', async (req: express.Request, res: express.Response) => {
 })
 export const Productshow = express.Router()
 Productshow.get('/', async (req: express.Request, res: express.Response) => {
-  const productId = String(req.query.id)
+  const productId =req.params.id
   try {
     const productIntity = new ProductsList()
     const product = await productIntity.show(productId)

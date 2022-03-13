@@ -72,7 +72,7 @@ exports.ordershow.get('/', function (req, res) { return __awaiter(void 0, void 0
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                orderId = String(req.query.id);
+                orderId = req.params.id;
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
@@ -126,7 +126,7 @@ exports.deletOrder.delete('/', function (req, res) { return __awaiter(void 0, vo
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                getorderData = String(req.query.id);
+                getorderData = req.params.id;
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);

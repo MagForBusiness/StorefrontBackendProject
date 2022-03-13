@@ -13,7 +13,7 @@ var router = express.Router()
 router.use('/user-index', verifyAuthToken, IndexUser)
 
 /* GET  user show route. */
-router.use('/user', verifyAuthToken, ShowUser)
+router.use('/user/:id', verifyAuthToken, ShowUser)
 
 // get user register (NewUser) route
 router.use('/signup', NewUser)
@@ -26,20 +26,20 @@ router.use('/signin', LoginUser)
 router.use('/products-index', ProductRout)
 
 /* GET  products show route. */
-router.use('/product', Productshow)
+router.use('/product/:id', Productshow)
 
 /* GET  Creat New product  route. */
 router.use('/add-product', verifyAuthToken, NewProduct)
 
 //orders
 /* GET  order show route. */
-router.use('/orders', ordershow)
+router.use('/orders/:id', ordershow)
 /* GET  order index route. */
 router.use('/orders-index', OrderRout)
 /* GET  order index route. */
 router.use('/NewOrder', NewOrder)
 /* GET  order delete route. */
-router.use('/deletOrder',deletOrder )
+router.use('/deletOrder/:id',deletOrder )
 
 
 /* get productsInActiveOrderby user id */
