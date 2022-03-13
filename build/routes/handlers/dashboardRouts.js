@@ -48,7 +48,7 @@ exports.productsInActiveOrder.get('/', function (req, res) { return __awaiter(vo
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                userId = String(req.query.id);
+                userId = req.params.id;
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);

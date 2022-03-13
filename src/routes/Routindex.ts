@@ -43,7 +43,7 @@ router.use('/deletOrder/:id',deletOrder )
 
 
 /* get productsInActiveOrderby user id */
-router.use('/ActiveorderbyuserId', verifyAuthToken, productsInActiveOrder)
+router.use('/ActiveorderbyuserId/:id', verifyAuthToken, productsInActiveOrder)
 
 //show msg Main router Connect
 router.get('/', (req: express.Request, res: express.Response) => {

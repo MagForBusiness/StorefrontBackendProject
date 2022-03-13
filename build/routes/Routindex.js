@@ -37,7 +37,7 @@ router.use('/NewOrder', OrderRouts_1.NewOrder);
 /* GET  order delete route. */
 router.use('/deletOrder/:id', OrderRouts_1.deletOrder);
 /* get productsInActiveOrderby user id */
-router.use('/ActiveorderbyuserId', verifyAuthToken_1.default, dashboardRouts_1.productsInActiveOrder);
+router.use('/ActiveorderbyuserId/:id', verifyAuthToken_1.default, dashboardRouts_1.productsInActiveOrder);
 //show msg Main router Connect
 router.get('/', function (req, res) {
     res.send('Main router Connect!');

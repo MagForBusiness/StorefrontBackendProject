@@ -3,7 +3,7 @@ import { DashboardQueries } from '../../Services/dashboard'
 
 export const productsInActiveOrder = express.Router()
 productsInActiveOrder.get('/', async (req: express.Request, res: express.Response) => {
-  const userId = String(req.query.id)
+  const userId = req.params.id
   try {
     const productIntity = new DashboardQueries()
     const orderActive = await productIntity.productsInActiveOrdersbyuser(userId)

@@ -116,21 +116,21 @@ https://www.getpostman.com/collections/66a1f2830f338b2bfd3a
 #### Or type manualy as shown below :
 #### Products
 - Index                  [localhost:3000/products-index] 
-- Show                   [localhost:3000/product?id=1]
+- Show                   [localhost:3000/product/:id=1]
 - Create [token required] [localhost:3000/add-product]
 - [OPTIONAL] Top 5 most popular products 
 - [OPTIONAL] Products by category(args: product category) 
 
 #### Users
 - Index [token required]        [localhost:3000/user-index]
-- Show [token required]         [localhost:3000/user?id=7]
+- Show [token required]         [localhost:3000/user/:id=7]
 - Create N[token required]      [localhost:3000/signup]
 
 #### Orders
-- Current Order by user (args: user id)[token required]   [localhost:3000/ActiveorderbyuserId?id=9]
+- Current Order by user (args: user id)[token required]   [localhost:3000/ActiveorderbyuserId/:id=9]
 - [OPTIONAL] Completed Orders by user (args: user id)[token required]
 
 ### Orders endpoint [OPTIONAL Reviwer Ask me to do it]
 - Index [localhost:3000/orders-index]
 - Create[localhost:3000/NewOrder]
--show [localhost:3000/orders?id=1]
+-show [localhost:3000/orders/:id=1]
