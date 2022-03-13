@@ -164,11 +164,11 @@ describe('Test endpoints Routers responses', function () {
             }
         });
     }); });
-    it('gets the api (localhost:3000/ActiveorderbyuserId?id=9) endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('gets the api (localhost:3000/ActiveorderbyuserId/:id=9) endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('/ActiveorderbyuserId?id=9')];
+                case 0: return [4 /*yield*/, request.get('/ActiveorderbyuserId/:id=9')];
                 case 1:
                     response = _a.sent();
                     expect(response.status).toBe(401);

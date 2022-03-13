@@ -50,8 +50,8 @@ describe('Test endpoints Routers responses', () => {
     await vordersList.resetproudctIdSequences()
 
   })
-  it('gets the api (localhost:3000/ActiveorderbyuserId?id=9) endpoint', async () => {
-    const response = await request.get('/ActiveorderbyuserId?id=9')
+  it('gets the api (localhost:3000/ActiveorderbyuserId/:id=9) endpoint', async () => {
+    const response = await request.get('/ActiveorderbyuserId/:id=9')
     expect(response.status).toBe(401)
   })
 })
